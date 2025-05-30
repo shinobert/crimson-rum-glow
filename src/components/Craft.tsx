@@ -26,45 +26,51 @@ const Craft = () => {
   ];
 
   return (
-    <section id="craft" className="py-20 bg-rum-cream">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-5xl font-bold text-rum-red mb-6">
-            The Art of <span className="text-rum-gold">Craftsmanship</span>
+    <section id="craft" className="py-24 bg-gradient-to-br from-rum-red-dark via-rum-black to-rum-red-dark relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-rum-gold/15 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-l from-rum-gold/15 to-transparent rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20 animate-fade-in-up">
+          <h2 className="text-6xl md:text-7xl font-bold text-white mb-8">
+            The Art of <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Craftsmanship</span>
           </h2>
-          <p className="text-xl text-rum-red/80 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Every drop tells a story of passion, tradition, and uncompromising quality
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {steps.map((step, index) => (
             <div 
               key={step.title}
-              className="text-center group animate-fade-in-up"
+              className="text-center group animate-fade-in-up backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20 hover:border-rum-gold/50 transition-all duration-500 hover:bg-rum-black/50"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+              <div className="text-7xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
                 {step.icon}
               </div>
-              <h3 className="text-2xl font-bold text-rum-red mb-3">{step.title}</h3>
-              <p className="text-rum-red/70">{step.description}</p>
+              <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">{step.title}</h3>
+              <p className="text-white/70 leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="relative rounded-xl overflow-hidden animate-scale-in">
+        <div className="relative rounded-2xl overflow-hidden animate-scale-in group">
           <img 
             src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1200&q=80"
             alt="Distillery process"
-            className="w-full h-96 object-cover"
+            className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-rum-red/70 to-transparent flex items-center">
-            <div className="p-12 text-white max-w-lg">
-              <h3 className="text-3xl font-bold mb-4">Master Distiller's Touch</h3>
-              <p className="text-lg opacity-90">
+          <div className="absolute inset-0 bg-gradient-to-r from-rum-black/80 via-rum-red/40 to-transparent flex items-center">
+            <div className="p-12 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-rum-gold/30">
+              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">Master Distiller's Touch</h3>
+              <p className="text-lg text-white/90 leading-relaxed">
                 Each batch is carefully monitored by our master distiller, 
-                ensuring every bottle meets our exacting standards of excellence.
+                ensuring every bottle meets our exacting standards of excellence and carries forward our legacy of perfection.
               </p>
             </div>
           </div>

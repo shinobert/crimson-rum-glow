@@ -64,17 +64,23 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				rum: {
-					'red': '#8B0000',
-					'red-light': '#DC143C',
+					'red': '#DC143C',
+					'red-dark': '#8B0000',
+					'red-light': '#FF6B6B',
 					'gold': '#FFD700',
 					'gold-dark': '#B8860B',
-					'cream': '#FFF8DC'
+					'gold-light': '#FFF8DC',
+					'black': '#0A0A0A',
+					'black-light': '#1A1A1A'
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backdropBlur: {
+				xs: '2px',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -148,6 +154,14 @@ export default {
 					'100%': {
 						left: '100%'
 					}
+				},
+				'glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px rgba(255, 215, 0, 0.5)'
+					},
+					'50%': {
+						boxShadow: '0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.6)'
+					}
 				}
 			},
 			animation: {
@@ -159,6 +173,7 @@ export default {
 				'scale-in': 'scale-in 0.6s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'shine': 'shine 2s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite',
 			}
 		}
 	},

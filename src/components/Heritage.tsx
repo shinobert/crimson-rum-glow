@@ -3,47 +3,56 @@ import React from 'react';
 
 const Heritage = () => {
   return (
-    <section id="heritage" className="py-20 bg-rum-cream">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="heritage" className="py-24 bg-gradient-to-br from-rum-black to-rum-red-dark relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-rum-gold/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-l from-rum-red/20 to-transparent rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="animate-fade-in-left">
-            <h2 className="text-5xl font-bold text-rum-red mb-8">
+            <h2 className="text-6xl md:text-7xl font-bold text-white mb-10">
               A Legacy of 
-              <span className="text-rum-gold"> Excellence</span>
+              <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block"> Excellence</span>
             </h2>
-            <p className="text-lg text-rum-red/80 mb-6 leading-relaxed">
-              For over 150 years, our master distillers have perfected the art of rum making. 
-              Each bottle carries the essence of Caribbean tradition, crafted with the finest 
-              sugarcane and aged in oak barrels under the tropical sun.
-            </p>
-            <p className="text-lg text-rum-red/80 mb-8 leading-relaxed">
-              Our commitment to quality and tradition has made us one of the most respected 
-              rum producers in the Caribbean, with awards and recognition from around the world.
-            </p>
-            <div className="flex items-center space-x-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-rum-gold mb-2">150+</div>
-                <div className="text-rum-red/70">Years of Heritage</div>
+            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20 mb-8">
+              <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                For over 150 years, our master distillers have perfected the art of rum making. 
+                Each bottle carries the essence of Caribbean tradition, crafted with the finest 
+                sugarcane and aged in oak barrels under the tropical sun.
+              </p>
+              <p className="text-lg text-white/90 leading-relaxed">
+                Our commitment to quality and tradition has made us one of the most respected 
+                rum producers in the Caribbean, with awards and recognition from around the world.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-8">
+              <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
+                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">150+</div>
+                <div className="text-white/80 text-sm">Years of Heritage</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-rum-gold mb-2">50+</div>
-                <div className="text-rum-red/70">International Awards</div>
+              <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
+                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">50+</div>
+                <div className="text-white/80 text-sm">International Awards</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-rum-gold mb-2">12</div>
-                <div className="text-rum-red/70">Unique Blends</div>
+              <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
+                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">12</div>
+                <div className="text-white/80 text-sm">Unique Blends</div>
               </div>
             </div>
           </div>
           
           <div className="animate-fade-in-right">
-            <div className="relative">
+            <div className="relative group">
               <img 
                 src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=800&q=80" 
                 alt="Rum distillery" 
-                className="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-700 border border-rum-gold/30"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-rum-red/30 to-transparent rounded-lg"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-rum-black/60 via-transparent to-rum-gold/20 rounded-2xl group-hover:from-rum-black/40 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-rum-gold/0 to-rum-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </div>
         </div>
