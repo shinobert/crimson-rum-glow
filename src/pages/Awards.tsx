@@ -1,0 +1,106 @@
+
+import React from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+const Awards = () => {
+  const awards = [
+    {
+      year: "2024",
+      title: "World's Best Rum",
+      organization: "International Wine & Spirit Competition",
+      product: "Master's Choice 21 Year",
+      medal: "Double Gold"
+    },
+    {
+      year: "2023",
+      title: "Best Caribbean Rum",
+      organization: "San Francisco World Spirits Competition",
+      product: "Caribbean Gold 8 Year",
+      medal: "Gold"
+    },
+    {
+      year: "2022",
+      title: "Rum of the Year",
+      organization: "Rum Masters Competition",
+      product: "Spiced Reserve 12 Year",
+      medal: "Master"
+    },
+    {
+      year: "2021",
+      title: "Excellence in Distillation",
+      organization: "Caribbean Spirits Awards",
+      product: "Black Label 15 Year",
+      medal: "Platinum"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black">
+      <Header />
+      
+      <div className="pt-32 pb-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20 animate-fade-in-up">
+            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">
+              Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Awards</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+              Recognition of excellence from the world's most prestigious spirits competitions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            <div className="md:col-span-2 lg:col-span-1 backdrop-blur-sm bg-rum-gold/10 rounded-2xl p-8 border border-rum-gold/30 text-center">
+              <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">50+</div>
+              <div className="text-white text-xl">International Awards</div>
+            </div>
+            <div className="backdrop-blur-sm bg-rum-gold/10 rounded-2xl p-8 border border-rum-gold/30 text-center">
+              <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">25</div>
+              <div className="text-white text-xl">Gold Medals</div>
+            </div>
+            <div className="backdrop-blur-sm bg-rum-gold/10 rounded-2xl p-8 border border-rum-gold/30 text-center">
+              <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">15</div>
+              <div className="text-white text-xl">Master Awards</div>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="text-4xl font-bold text-center text-white mb-12 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+              Recent Recognition
+            </h2>
+            {awards.map((award, index) => (
+              <div 
+                key={`${award.year}-${award.title}`}
+                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20 hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
+                    {award.year}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">{award.title}</h3>
+                    <p className="text-white/70">{award.organization}</p>
+                  </div>
+                  <div>
+                    <p className="text-white font-medium">{award.product}</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light text-rum-black px-4 py-2 rounded-full font-bold">
+                      {award.medal}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Awards;

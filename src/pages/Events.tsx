@@ -1,0 +1,94 @@
+
+import React from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Button } from "@/components/ui/button";
+
+const Events = () => {
+  const upcomingEvents = [
+    {
+      date: "March 15, 2024",
+      title: "Master Distiller's Tasting",
+      location: "Caribbean Distillery, Barbados",
+      description: "Join our Master Distiller for an exclusive tasting of rare and limited editions",
+      price: "$150"
+    },
+    {
+      date: "April 8, 2024",
+      title: "Rum & Food Pairing Experience",
+      location: "The Ritz-Carlton, Miami",
+      description: "A culinary journey pairing our finest rums with gourmet Caribbean cuisine",
+      price: "$200"
+    },
+    {
+      date: "May 20, 2024",
+      title: "Distillery Behind-the-Scenes Tour",
+      location: "Caribbean Distillery, Barbados",
+      description: "Discover the secrets of rum making with our expert guides",
+      price: "$75"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black">
+      <Header />
+      
+      <div className="pt-32 pb-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20 animate-fade-in-up">
+            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">
+              Upcoming <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Events</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+              Join us for exclusive tastings, tours, and experiences celebrating the art of rum
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            {upcomingEvents.map((event, index) => (
+              <div 
+                key={event.title}
+                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20 hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <div className="mb-6">
+                  <div className="text-rum-gold font-semibold mb-2">{event.date}</div>
+                  <h3 className="text-2xl font-bold text-white mb-2 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+                    {event.title}
+                  </h3>
+                  <p className="text-white/70 mb-4">{event.location}</p>
+                  <p className="text-white/90 leading-relaxed mb-6">{event.description}</p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="text-2xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
+                    {event.price}
+                  </div>
+                  <Button className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold">
+                    Book Now
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-12 border border-rum-gold/20 text-center">
+            <h2 className="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+              Private Events
+            </h2>
+            <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Looking to host a private tasting or corporate event? Our team can create a bespoke experience 
+              tailored to your needs, featuring our finest rums and expert guidance.
+            </p>
+            <Button size="lg" className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold px-12 py-6 text-lg">
+              Contact Our Events Team
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Events;
