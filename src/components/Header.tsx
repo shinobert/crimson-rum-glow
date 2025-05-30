@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Wheel } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -145,8 +145,8 @@ const Header = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-rum-black via-rum-red to-rum-black flex items-center justify-center">
           {/* Loading animation */}
           <div className="text-center">
-            <div className="w-20 h-20 border-4 border-rum-gold/30 border-t-rum-gold rounded-full animate-spin mb-8"></div>
-            <p className="text-rum-gold text-2xl font-['EB_Garamond'] animate-pulse">Loading...</p>
+            <Wheel className="w-32 h-32 text-rum-gold animate-spin mb-8 mx-auto" />
+            <p className="text-rum-gold text-3xl font-['EB_Garamond'] font-[700] animate-pulse">Loading...</p>
           </div>
         </div>
       </div>
