@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -37,7 +36,7 @@ const Header = () => {
           <div className="w-10 h-10 bg-gradient-to-br from-rum-gold to-rum-gold-dark rounded-full flex items-center justify-center shadow-lg animate-glow">
             <span className="text-rum-black font-bold text-xl">R</span>
           </div>
-          <span className="text-white text-2xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">CARIBBEAN</span>
+          <span className="text-white text-2xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-['EB_Garamond'] font-[700]">Roman Candy Rum</span>
         </Link>
 
         {/* Desktop Navigation */}

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -45,8 +44,8 @@ const Hero = () => {
       {/* Main Content */}
       <div className="relative z-20 text-center text-white px-6 max-w-5xl">
         <div className="animate-fade-in-up">
-          <h1 className="text-7xl md:text-9xl font-bold mb-6 bg-gradient-to-r from-white via-rum-gold to-rum-gold-light bg-clip-text text-transparent animate-scale-in drop-shadow-2xl">
-            CARIBBEAN
+          <h1 className="text-7xl md:text-9xl font-bold mb-6 bg-gradient-to-r from-white via-rum-gold to-rum-gold-light bg-clip-text text-transparent animate-scale-in drop-shadow-2xl font-['EB_Garamond'] font-[700]">
+            ROMAN CANDY RUM
           </h1>
           <h2 className="text-5xl md:text-7xl font-light mb-8 bg-gradient-to-r from-rum-gold to-white bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Premium Rum
