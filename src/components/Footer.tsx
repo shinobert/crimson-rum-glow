@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer = () => {
@@ -12,11 +11,13 @@ const Footer = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="animate-fade-in-left">
-            <div className="flex items-center space-x-2 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-rum-gold to-rum-gold-dark rounded-full flex items-center justify-center shadow-lg animate-glow">
-                <span className="text-rum-black font-bold text-2xl">R</span>
-              </div>
-              <span className="text-3xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">CARIBBEAN</span>
+            <div className="flex items-center space-x-3 mb-8">
+              <img 
+                src="/Logo.png" 
+                alt="Roman Candy Rum Logo" 
+                className="h-14 w-auto"
+              />
+              <span className="text-3xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-['EB_Garamond'] font-[700]">Roman Candy Rum</span>
             </div>
             <div className="backdrop-blur-sm bg-rum-black/20 rounded-xl p-6 border border-rum-gold/20">
               <p className="text-white/80 mb-6 leading-relaxed">
@@ -96,7 +97,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-rum-gold/30 pt-8 text-center">
-          <p className="text-white/70">&copy; 2024 Caribbean Premium Rum. All rights reserved.</p>
+          <p className="text-white/70">&copy; 2024 Roman Candy Rum. All rights reserved.</p>
         </div>
       </div>
     </footer>

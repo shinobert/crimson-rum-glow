@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -12,12 +11,12 @@ const Hero = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-80"
         >
           <source src="/Splashing Banner.mov" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-rum-black/80 via-rum-red/20 to-rum-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-rum-black/50 via-transparent to-rum-black/30"></div>
       </div>
 
       {/* Animated Gold Particles */}
@@ -46,27 +45,27 @@ const Hero = () => {
       {/* Main Content */}
       <div className="relative z-20 text-center text-white px-6 max-w-5xl">
         <div className="animate-fade-in-up">
-          <h1 className="text-7xl md:text-9xl font-bold mb-6 bg-gradient-to-r from-white via-rum-gold to-rum-gold-light bg-clip-text text-transparent animate-scale-in drop-shadow-2xl font-['EB_Garamond'] font-[700]">
+          <h1 className="text-4xl md:text-6xl font-light mb-10 text-white uppercase tracking-widest animate-fade-in-up eb-garamond-700" style={{ textShadow: '-2px 3px 0 #FFD700, -4px 6px 0 #8B0000' }}>
             ROMAN CANDY RUM
           </h1>
-          <h2 className="text-5xl md:text-7xl font-light mb-8 bg-gradient-to-r from-rum-gold to-white bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            Premium Rum
-          </h2>
+          <h3 className="text-xl md:text-2xl font-light mb-10 text-white uppercase tracking-widest animate-fade-in-up eb-garamond-500" style={{ animationDelay: '0.3s', textShadow: '-1px 1px 0 rgba(255,215,0,0.7)' }}>
+            A New Orleans Tradition, All Grown Up!
+          </h3>
         </div>
         
-        <div className="animate-fade-in-up backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20" style={{ animationDelay: '0.6s' }}>
+        {/* <div className="animate-fade-in-up backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20" style={{ animationDelay: '0.6s' }}>
           <p className="text-2xl md:text-3xl mb-12 text-white/90 font-light leading-relaxed">
             Crafted with <span className="text-rum-gold font-semibold">passion</span>, aged to <span className="text-rum-gold font-semibold">perfection</span>.<br />
             Experience the finest Caribbean tradition.
           </p>
-        </div>
+        </div> */}
 
         <div className="animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
           <Button 
             size="lg" 
             className="bg-gradient-to-r from-rum-gold via-rum-gold-light to-rum-gold hover:from-rum-gold-dark hover:via-rum-gold hover:to-rum-gold-light text-rum-black font-bold px-16 py-8 text-xl transition-all duration-500 transform hover:scale-110 relative overflow-hidden group shadow-2xl border border-rum-gold/50"
           >
-            <span className="relative z-10">DISCOVER THE LEGEND</span>
+            <span className="relative z-10 eb-garamond-600">DISCOVER THE LEGEND</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
           </Button>
         </div>

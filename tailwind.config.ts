@@ -1,5 +1,5 @@
-
 import type { Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'eb-garamond': ['"EB Garamond"', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -162,6 +165,22 @@ export default {
 					'50%': {
 						boxShadow: '0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.6)'
 					}
+				},
+				'spin-slow': {
+					'0%': {
+						transform: 'rotate(0deg)'
+					},
+					'100%': {
+						transform: 'rotate(360deg)'
+					}
+				},
+				'text-fill': {
+					'0%': {
+						width: '0%'
+					},
+					'100%': {
+						width: '100%'
+					}
 				}
 			},
 			animation: {
@@ -174,8 +193,10 @@ export default {
 				'float': 'float 3s ease-in-out infinite',
 				'shine': 'shine 2s ease-in-out infinite',
 				'glow': 'glow 2s ease-in-out infinite',
+				'spin-slow': 'spin-slow 20s linear infinite',
+				'text-fill': 'text-fill 1.5s ease-in-out forwards'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindAnimate],
 } satisfies Config;

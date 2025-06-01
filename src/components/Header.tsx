@@ -2,6 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, Settings } from 'lucide-react';
 
+// Self-contained loading dots component
+const LoadingDots = () => {
+  const [dots, setDots] = useState('');
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots(prev => {
+        if (prev.length >= 3) return '';
+        return prev + '.';
+      });
+    }, 300);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  return <span className="inline-block w-9 text-left">{dots}</span>;
+};
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,7 +45,7 @@ const Header = () => {
       navigate(path);
       setIsMobileMenuOpen(false);
       setIsTransitioning(false);
-    }, 800);
+    }, 1200);
   };
 
   const navLinks = [
@@ -45,11 +63,13 @@ const Header = () => {
         isScrolled ? 'bg-rum-black/95 backdrop-blur-sm py-4' : 'bg-transparent py-6'
       }`}>
         <nav className="container mx-auto px-6 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2 animate-fade-in-left">
-            <div className="w-10 h-10 bg-gradient-to-br from-rum-gold to-rum-gold-dark rounded-full flex items-center justify-center shadow-lg animate-glow">
-              <span className="text-rum-black font-bold text-xl">R</span>
-            </div>
-            <span className="text-white text-2xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-['EB_Garamond'] font-[700]">Roman Candy Rum</span>
+          <Link to="/" className="flex items-center space-x-3 animate-fade-in-left">
+            <img 
+              src="/Logo.png" 
+              alt="Roman Candy Rum Logo" 
+              className="h-12 w-auto"
+            />
+            <span className="text-white text-2xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">Roman Candy Rum</span>
           </Link>
 
           {/* Hamburger Menu Button - Always Visible */}
@@ -93,18 +113,18 @@ const Header = () => {
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center">
             {/* Menu Title with New Orleans flair */}
-            <h2 className={`text-6xl md:text-8xl font-bold mb-16 bg-gradient-to-r from-rum-gold via-white to-rum-gold bg-clip-text text-transparent font-['EB_Garamond'] transition-all duration-1000 ${
+            <h2 className={`text-6xl md:text-8xl font-bold mb-16 bg-gradient-to-r from-rum-gold via-white to-rum-gold bg-clip-text text-transparent font-eb-garamond transition-all duration-1000 ${
               isMobileMenuOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'
             }`}>
               Menu
             </h2>
 
             {/* Navigation Links */}
-            <nav className="space-y-8">
+            <nav className="space-y-8 flex flex-col items-center">
               {navLinks.map((link, index) => (
                 <div
                   key={link.to}
-                  className={`transition-all duration-700 ease-out ${
+                  className={`transition-all duration-700 ease-out text-center ${
                     isMobileMenuOpen 
                       ? 'opacity-100 transform translate-x-0' 
                       : 'opacity-0 transform translate-x-20'
@@ -113,26 +133,17 @@ const Header = () => {
                 >
                   <button
                     onClick={() => handleNavigation(link.to)}
-                    className="block text-white hover:text-rum-gold transition-all duration-500 font-medium text-4xl md:text-6xl font-['EB_Garamond'] relative group"
+                    className="text-white hover:text-rum-gold transition-all duration-500 font-medium text-4xl md:text-6xl font-eb-garamond relative group"
                   >
                     <span className="relative z-10">{link.text}</span>
                     {/* Underline animation */}
-                    <span className="absolute bottom-0 left-1/2 w-0 h-1 bg-gradient-to-r from-rum-gold to-rum-gold-light transition-all duration-500 group-hover:w-full group-hover:left-0"></span>
+                    <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-rum-gold to-rum-gold-light transition-all duration-500 group-hover:w-full"></span>
                     {/* Glow effect on hover */}
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-rum-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
                   </button>
                 </div>
               ))}
             </nav>
-
-            {/* Decorative elements */}
-            <div className={`mt-16 flex justify-center space-x-8 transition-all duration-1000 ${
-              isMobileMenuOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'
-            }`} style={{ transitionDelay: '800ms' }}>
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="w-2 h-2 bg-rum-gold rounded-full animate-pulse" style={{ animationDelay: `${i * 300}ms` }}></div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
@@ -141,11 +152,39 @@ const Header = () => {
       <div className={`fixed inset-0 z-50 transition-all duration-800 ease-in-out ${
         isTransitioning ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-rum-black via-rum-red to-rum-black flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black flex items-center justify-center">
+          {/* Golden particles background */}
+          <div className="absolute inset-0">
+            {[...Array(30)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-30 animate-float"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${4 + Math.random() * 2}s`,
+                  boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
+                }}
+              ></div>
+            ))}
+          </div>
+          
           {/* Loading animation */}
-          <div className="text-center">
-            <Settings className="w-32 h-32 text-rum-gold animate-spin mb-8 mx-auto" />
-            <p className="text-rum-gold text-3xl font-['EB_Garamond'] font-[700] animate-pulse">Loading...</p>
+          <div className="text-center relative z-10">
+            <div className="inline-block">
+              <img 
+                src="/Wheel.png" 
+                alt="Loading Wheel" 
+                className="w-64 h-64 mx-auto animate-spin-slow opacity-80 drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]"
+                style={{ animationDuration: '8s' }}
+              />
+              <div className="flex justify-center mt-8">
+                <h2 className="text-4xl font-eb-garamond bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] flex items-center">
+                  Loading<LoadingDots />
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
       </div>
