@@ -10,31 +10,31 @@ const Cocktails = () => {
   const cocktailsByFlavor = {
     chocolate: [
       {
-        name: "Chocolate Mint Delight",
-        rum: "Caribbean Chocolate Rum",
-        ingredients: ["2 oz Chocolate Rum", "1 oz Fresh Mint Syrup", "1 oz Heavy Cream", "Dark Chocolate Shavings", "Fresh Mint Leaves"],
-        description: "A rich and indulgent cocktail with deep chocolate notes and refreshing mint",
-        image: "https://images.unsplash.com/photo-1546171753-97d8c4ffe650?auto=format&fit=crop&w=600&q=80"
+        name: "Chocolate Rum Old Fashion",
+        rum: "Chocolate Flavored Rum",
+        ingredients: ["2 oz Roman Candy Chocolate Rum", "1 oz Aromatic Bitters", "1 oz Orange Bitters"],
+        description: "In a Scotch glass, WITHOUT ICE, shake 2-3 dashes each of the bitters. Pour in about 2 oz. of Roman Candy Chocolate Rum. Now, introduce ice to cover the cocktail. Stir with a cocktail stirrer for about 30 seconds. It’s ready to serve. (Note: It’s important that this cocktail is mixed this way. Don’t mix it directly over the ice. The ice comes last.) Enjoy!",
+        image: "/Images/old-fashion.jpg"
       },
       {
-        name: "Caribbean Mocha Martini",
-        rum: "Caribbean Chocolate Rum",
-        ingredients: ["2 oz Chocolate Rum", "1 oz Coffee Liqueur", "1 oz Espresso", "0.5 oz Simple Syrup", "Cocoa Powder Rim"],
+        name: "Chocolate Martini",
+        rum: "Chocolate Flavored Rum",
+        ingredients: ["1 ½ oz Chocolate Rum", "1 oz Orchata or Rumchata Cinnamon Cream", "1 oz Milk", "Just a dash of Miletti or Godiva Chocolate Liqueur. Hershey’s chocolate syrup will do. But just a dash or so. Ground Cinnamon"],
         description: "A sophisticated blend of chocolate and coffee with Caribbean flair",
-        image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80"
+        image: "/Images/chocolate-martini.jpg"
       }
     ],
     vanilla: [
       {
         name: "Vanilla Cream Paradise",
-        rum: "Caribbean Vanilla Rum",
+        rum: "Vanilla Flavored Rum",
         ingredients: ["2 oz Vanilla Rum", "1 oz Coconut Cream", "1 oz Pineapple Juice", "0.5 oz Vanilla Syrup", "Toasted Coconut Flakes"],
         description: "A smooth and creamy tropical escape with rich vanilla undertones",
         image: "https://images.unsplash.com/photo-1582263309913-9dc184fa6ced?auto=format&fit=crop&w=600&q=80"
       },
       {
         name: "Vanilla Spice Old Fashioned",
-        rum: "Caribbean Vanilla Rum",
+        rum: "Vanilla Flavored Rum",
         ingredients: ["2 oz Vanilla Rum", "1 Sugar Cube", "2 Dashes Vanilla Bitters", "Orange Peel", "Cinnamon Stick"],
         description: "A classic cocktail elevated with warm vanilla and exotic spices",
         image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80"
@@ -43,14 +43,14 @@ const Cocktails = () => {
     strawberry: [
       {
         name: "Strawberry Sunset",
-        rum: "Caribbean Strawberry Rum",
+        rum: "Strawberry Flavored Rum",
         ingredients: ["2 oz Strawberry Rum", "1 oz Fresh Lime Juice", "1 oz Strawberry Puree", "0.5 oz Agave Nectar", "Fresh Strawberries"],
         description: "A vibrant and fruity cocktail that captures the essence of tropical sunsets",
         image: "https://images.unsplash.com/photo-1546171753-97d8c4ffe650?auto=format&fit=crop&w=600&q=80"
       },
       {
         name: "Berry Bliss Mojito",
-        rum: "Caribbean Strawberry Rum",
+        rum: "Strawberry Flavored Rum",
         ingredients: ["2 oz Strawberry Rum", "8 Fresh Mint Leaves", "6 Fresh Strawberries", "1 oz Lime Juice", "Soda Water"],
         description: "A refreshing twist on the classic mojito with sweet strawberry flavors",
         image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80"
