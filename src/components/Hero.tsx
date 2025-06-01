@@ -14,14 +14,14 @@ const Hero = () => {
           playsInline
           className="w-full h-full object-cover opacity-40"
         >
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="/Splashing Banner.mov" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-rum-black/80 via-rum-red/20 to-rum-black/60"></div>
       </div>
 
       {/* Animated Gold Particles */}
-      <div className="absolute inset-0 z-10">
+      {/* <div className="absolute inset-0 z-10">
         {[...Array(30)].map((_, i) => (
           <div
             key={i}
@@ -35,7 +35,7 @@ const Hero = () => {
             }}
           ></div>
         ))}
-      </div>
+      </div> */}
 
       {/* Gradient Orbs */}
       <div className="absolute inset-0 z-5">
