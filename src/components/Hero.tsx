@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -13,7 +14,8 @@ const Hero = () => {
           playsInline
           className="w-full h-full object-cover opacity-40"
         >
-          <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236dadf473f28a4c4f8f4c8db6b6e8c7c0a8b0b0&profile_id=165&oauth2_token_id=57447761" type="video/mp4" />
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-rum-black/80 via-rum-red/20 to-rum-black/60"></div>
       </div>
