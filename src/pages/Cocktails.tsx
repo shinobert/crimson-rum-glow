@@ -20,7 +20,7 @@ const Cocktails = () => {
         name: "Chocolate Martini",
         rum: "Chocolate Flavored Rum",
         ingredients: ["1 ½ oz Chocolate Rum", "1 oz Orchata or Rumchata Cinnamon Cream", "1 oz Milk", "Just a dash of Miletti or Godiva Chocolate Liqueur. Hershey’s chocolate syrup will do. But just a dash or so. Ground Cinnamon"],
-        description: "A sophisticated blend of chocolate and coffee with Caribbean flair",
+        description: "Add all ingredients into a shaker, except ground Cinnamon, with ice. Shake and pour into a chilled martini glass or cocktail glass. Dust with Cinnamon and serve.",
         image: "/Images/chocolate-martini.jpg"
       }
     ],
