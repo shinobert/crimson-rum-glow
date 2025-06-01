@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -13,13 +12,40 @@ const Heritage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black">
+    <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
+      {/* Background image - Mule */}
+      <div className="absolute inset-0 z-0 opacity-50 pointer-events-none">
+        <img
+          src="/Images/mule.jpg"
+          alt="Heritage Mule"
+          className="absolute w-full h-full object-cover object-center mix-blend-overlay"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-rum-black/80 via-transparent to-rum-black/80"></div>
+      </div>
+      
+      {/* Background particles */}
+      <div className="absolute inset-0 pointer-events-none z-5">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-30 animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${4 + Math.random() * 2}s`,
+              boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
+            }}
+          ></div>
+        ))}
+      </div>
+      
       <Header />
       
-      <div className="pt-32 pb-20">
+      <div className="pt-32 pb-20 relative z-10">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20 animate-fade-in-up">
-            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
               Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Heritage</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
@@ -30,9 +56,9 @@ const Heritage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-20">
             <div className="animate-fade-in-left">
               <img 
-                src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=800&q=80"
-                alt="Historic distillery"
-                className="rounded-2xl shadow-2xl border border-rum-gold/30"
+                src="/Images/cart.jpg" 
+                alt="Traditional Roman Candy Cart"
+                className="rounded-2xl shadow-2xl border border-rum-gold/30 w-full h-auto object-cover"
               />
             </div>
             <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20">

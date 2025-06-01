@@ -17,7 +17,7 @@ const LoadingDots = () => {
     return () => clearInterval(interval);
   }, []);
   
-  return <span className="inline-block w-9 text-left">{dots}</span>;
+  return <span className="inline-block w-9 text-left eb-garamond-800 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">{dots}</span>;
 };
 
 const Header = () => {
@@ -65,11 +65,11 @@ const Header = () => {
         <nav className="container mx-auto px-6 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3 animate-fade-in-left">
             <img 
-              src="/Logo.png" 
+              src="/Images/Logo.png" 
               alt="Roman Candy Rum Logo" 
               className="h-12 w-auto"
             />
-            <span className="text-white text-2xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">Roman Candy Rum</span>
+            <span className="text-white text-2xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond uppercase">ROMAN CANDY RUM</span>
           </Link>
 
           {/* Hamburger Menu Button - Always Visible */}
@@ -111,20 +111,13 @@ const Header = () => {
 
         {/* Menu Content */}
         <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center">
-            {/* Menu Title with New Orleans flair */}
-            <h2 className={`text-6xl md:text-8xl font-bold mb-16 bg-gradient-to-r from-rum-gold via-white to-rum-gold bg-clip-text text-transparent font-eb-garamond transition-all duration-1000 ${
-              isMobileMenuOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'
-            }`}>
-              Menu
-            </h2>
-
-            {/* Navigation Links */}
-            <nav className="space-y-8 flex flex-col items-center">
+          <div className="text-left w-full max-w-2xl md:max-w-3xl px-8 md:px-12">
+            {/* Navigation Links - Left aligned text in a centered container */}
+            <nav className="space-y-12 flex flex-col items-start">
               {navLinks.map((link, index) => (
                 <div
                   key={link.to}
-                  className={`transition-all duration-700 ease-out text-center ${
+                  className={`transition-all duration-700 ease-out ${
                     isMobileMenuOpen 
                       ? 'opacity-100 transform translate-x-0' 
                       : 'opacity-0 transform translate-x-20'
@@ -133,7 +126,8 @@ const Header = () => {
                 >
                   <button
                     onClick={() => handleNavigation(link.to)}
-                    className="text-white hover:text-rum-gold transition-all duration-500 font-medium text-4xl md:text-6xl font-eb-garamond relative group"
+                    className="text-white hover:text-rum-gold transition-all duration-500 text-4xl md:text-6xl font-eb-garamond relative group uppercase"
+                    style={{ fontWeight: 800 }}
                   >
                     <span className="relative z-10">{link.text}</span>
                     {/* Underline animation */}
@@ -174,13 +168,13 @@ const Header = () => {
           <div className="text-center relative z-10">
             <div className="inline-block">
               <img 
-                src="/Wheel.png" 
+                src="/Images/Wheel.png" 
                 alt="Loading Wheel" 
                 className="w-64 h-64 mx-auto animate-spin-slow opacity-80 drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]"
                 style={{ animationDuration: '8s' }}
               />
               <div className="flex justify-center mt-8">
-                <h2 className="text-4xl font-eb-garamond bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] flex items-center">
+                <h2 className="text-4xl eb-garamond-800 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] flex items-center uppercase">
                   Loading<LoadingDots />
                 </h2>
               </div>

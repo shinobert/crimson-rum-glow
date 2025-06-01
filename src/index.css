@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
 /* EB Garamond font classes with different weights */
 .eb-garamond {
@@ -132,9 +132,7 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -142,6 +140,17 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+  }
+
+  /* Custom text selection color */
+  ::selection {
+    background-color: rgba(192, 38, 38, 0.8); /* Red selection background */
+    color: white; /* Text color when selected */
+  }
+  
+  ::-moz-selection {
+    background-color: rgba(192, 38, 38, 0.8); /* Red selection background for Firefox */
+    color: white; /* Text color when selected */
   }
 }
 

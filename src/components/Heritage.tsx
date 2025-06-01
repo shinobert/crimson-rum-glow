@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Heritage = () => {
@@ -8,12 +7,27 @@ const Heritage = () => {
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-rum-gold/20 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-l from-rum-red/20 to-transparent rounded-full blur-3xl"></div>
+        
+        {/* Golden particles */}
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-30 animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${4 + Math.random() * 2}s`,
+              boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
+            }}
+          ></div>
+        ))}
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="animate-fade-in-left">
-            <h2 className="text-6xl md:text-7xl font-bold text-white mb-10">
+            <h2 className="text-6xl md:text-7xl font-bold text-white mb-10 font-eb-garamond">
               A Legacy of 
               <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block"> Excellence</span>
             </h2>
@@ -47,8 +61,8 @@ const Heritage = () => {
           <div className="animate-fade-in-right">
             <div className="relative group">
               <img 
-                src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=800&q=80" 
-                alt="Rum distillery" 
+                src="/Images/chocolate-rum.jpg" 
+                alt="Roman Candy Chocolate Rum" 
                 className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-700 border border-rum-gold/30"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-rum-black/60 via-transparent to-rum-gold/20 rounded-2xl group-hover:from-rum-black/40 transition-all duration-500"></div>
