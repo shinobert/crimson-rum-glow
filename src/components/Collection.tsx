@@ -10,27 +10,27 @@ const Collection = () => {
     {
       name: "Vanilla Flavored",
       description: "The perfect rum to mix with ANYTHING! Bursting with sweet vanilla flavor, it's the ultimate companion for those who like their drinks smooth, versatile, and full of character.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80",
       tags: ["Smooth", "Vanilla", "Premium"],
-      bgGradient: "from-cream-100 via-vanilla-50 to-amber-50",
+      bgGradient: "from-amber-50 via-yellow-50 to-cream-100",
       accentColor: "amber-600",
       textColor: "text-amber-900",
-      cardColor: "bg-gradient-to-br from-amber-50 via-cream-100 to-vanilla-100"
+      cardColor: "bg-gradient-to-br from-amber-50 via-yellow-50 to-cream-100"
     },
     {
       name: "Chocolate Flavored",
       description: "The FIRST Chocolate Rum to ever enter the scene of this industry. With it's bold, yet smooth flavor, you'll find the possibilities of new cocktails to be endless! Or just sip it straight.",
-      image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80",
       tags: ["Spiced", "Chocolate", "Sweet"],
       bgGradient: "from-amber-100 via-orange-200 to-yellow-100",
       accentColor: "orange-600",
       textColor: "text-orange-900",
-      cardColor: "bg-gradient-to-br from-orange-100 via-amber-100 to-yellow-100"
+      cardColor: "bg-gradient-to-br from-amber-100 via-orange-200 to-yellow-100"
     },
     {
       name: "Strawberry Flavored",
       description: "Bright, sweet, and unapologetically playful - this Strawberry Rum takes center stage in any cocktail! A must-have for curious mixers and confident sippers alike.",
-      image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=600&q=80",
       tags: ["Premium", "Strawberry", "Limited"],
       bgGradient: "from-pink-100 via-rose-100 to-red-100",
       accentColor: "pink-600",
@@ -67,15 +67,15 @@ const Collection = () => {
         };
       case 1: // Next card (right)
         return {
-          transform: 'translateX(80px) scale(0.9)',
+          transform: 'translateX(320px) scale(0.9)',
           zIndex: 20,
-          opacity: 0.8,
+          opacity: 1,
         };
       case 2: // Previous card (left)
         return {
-          transform: 'translateX(-80px) scale(0.9)',
+          transform: 'translateX(-320px) scale(0.9)',
           zIndex: 10,
-          opacity: 0.8,
+          opacity: 1,
         };
       default:
         return {
@@ -119,13 +119,13 @@ const Collection = () => {
           </p>
         </div>
 
-        <div className="relative h-[600px] flex items-center justify-center">
+        <div className="relative h-[650px] flex items-center justify-center">
           {/* Cards Container */}
-          <div className="relative w-80 h-[500px] mx-auto">
+          <div className="relative w-80 h-[550px] mx-auto">
             {rums.map((rum, index) => (
               <div
                 key={rum.name}
-                className={`absolute inset-0 w-80 h-[500px] ${rum.cardColor} rounded-2xl p-6 text-center transition-all duration-700 ease-in-out cursor-pointer border-2 shadow-2xl`}
+                className={`absolute inset-0 w-80 h-[550px] ${rum.cardColor} rounded-2xl p-6 text-center transition-all duration-700 ease-in-out cursor-pointer border-2 shadow-2xl`}
                 style={getCardPosition(index)}
                 onClick={() => setCurrentIndex(index)}
               >
@@ -170,7 +170,7 @@ const Collection = () => {
                   </p>
                   
                   <Button className={`px-6 bg-${rum.accentColor} hover:bg-${rum.accentColor}/80 text-white font-bold py-2 transition-all duration-500 transform hover:scale-105 shadow-xl`}>
-                    View Cocktails
+                    View Signature Cocktails
                   </Button>
                 </div>
 
