@@ -224,7 +224,7 @@ const Collection = () => {
     {
       name: "Vanilla Flavored",
       description: "The perfect rum to mix with ANYTHING! Bursting with sweet vanilla flavor, it's the ultimate companion for those who like their drinks smooth, versatile, and full of character.",
-      image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=600&q=80",
       tags: ["Smooth", "Vanilla", "Premium"],
       bgGradient: "from-cream-100 via-vanilla-50 to-amber-50",
       accentColor: "amber-600",
@@ -246,7 +246,7 @@ const Collection = () => {
     {
       name: "Strawberry Flavored",
       description: "Bright, sweet, and unapologetically playful - this Strawberry Rum takes center stage in any cocktail! A must-have for curious mixers and confident sippers alike.",
-      image: "https://images.unsplash.com/photo-1541233349642-6e425fe6190e?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80",
       tags: ["Premium", "Strawberry", "Limited"],
       bgGradient: "from-pink-100 via-rose-100 to-red-100",
       accentColor: "pink-600",
