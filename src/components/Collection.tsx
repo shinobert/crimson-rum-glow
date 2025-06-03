@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, memo, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -40,7 +39,7 @@ const RumCard = memo(({
   
   return (
     <div
-      className={`absolute inset-0 w-96 h-[500px] ${rum.cardColor} ${index === currentIndex ? 'active-card' : ''} rounded-2xl p-8 text-center transition-all duration-700 ease-in-out cursor-pointer overflow-hidden relative`}
+      className={`absolute inset-0 w-96 h-[500px] ${rum.cardColor} ${index === currentIndex ? 'active-card' : ''} rounded-2xl p-8 text-center transition-all duration-700 ease-in-out cursor-pointer`}
       style={{
         ...getCardPosition(index),
       }}
@@ -65,23 +64,6 @@ const RumCard = memo(({
         }, 1000); // 1 second delay before resuming
       }}
     >
-      {/* New Orleans decorative border */}
-      <div className="absolute inset-0 rounded-2xl border-2 border-rum-gold/30 pointer-events-none">
-        {/* Corner decorations */}
-        <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-rum-gold/50 rounded-tl-lg"></div>
-        <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-rum-gold/50 rounded-tr-lg"></div>
-        <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-rum-gold/50 rounded-bl-lg"></div>
-        <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-rum-gold/50 rounded-br-lg"></div>
-        
-        {/* Ornate side accents */}
-        <div className="absolute top-1/2 left-0 w-1 h-12 bg-gradient-to-b from-transparent via-rum-gold/40 to-transparent transform -translate-y-1/2"></div>
-        <div className="absolute top-1/2 right-0 w-1 h-12 bg-gradient-to-b from-transparent via-rum-gold/40 to-transparent transform -translate-y-1/2"></div>
-        
-        {/* Subtle fleur-de-lis inspired top accent */}
-        <div className="absolute top-0 left-1/2 w-8 h-1 bg-gradient-to-r from-transparent via-rum-gold/40 to-transparent transform -translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-1/2 w-8 h-1 bg-gradient-to-r from-transparent via-rum-gold/40 to-transparent transform -translate-x-1/2"></div>
-      </div>
-
       {/* Darkening overlay for side cards */}
       {position !== 0 && (
         <div 
