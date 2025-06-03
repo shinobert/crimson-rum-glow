@@ -49,6 +49,7 @@ const Header = () => {
   };
 
   const navLinks = [
+    { to: "/", text: "Home" },
     { to: "/heritage", text: "Heritage" },
     { to: "/awards", text: "Awards" },
     { to: "/events", text: "Events" },
@@ -126,7 +127,7 @@ const Header = () => {
                 >
                   <button
                     onClick={() => handleNavigation(link.to)}
-                    className="text-white hover:text-rum-gold transition-all duration-500 text-4xl md:text-6xl font-eb-garamond relative group uppercase"
+                    className="text-white hover:text-rum-gold transition-all duration-500 text-3xl md:text-5xl font-eb-garamond relative group uppercase"
                     style={{ fontWeight: 800 }}
                   >
                     <span className="relative z-10">{link.text}</span>

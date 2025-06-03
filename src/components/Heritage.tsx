@@ -28,18 +28,15 @@ const Heritage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="animate-fade-in-left">
             <h2 className="text-6xl md:text-7xl font-bold text-white mb-10 font-eb-garamond">
-              A Legacy of 
-              <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block"> Excellence</span>
+              True To Our 
+              <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block pb-3"> Heritage</span>
             </h2>
             <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20 mb-8">
               <p className="text-lg text-white/90 mb-6 leading-relaxed">
-                For over 150 years, our master distillers have perfected the art of rum making. 
-                Each bottle carries the essence of Caribbean tradition, crafted with the finest 
-                sugarcane and aged in oak barrels under the tropical sun.
+                Caribbean Rum meets a century's worth of New Orleans tradition. We perfected the flavors of our locally beloved Roman Chewing Taffy into smooth, sweet, award winning rums that will have you remembering the good ole days.
               </p>
               <p className="text-lg text-white/90 leading-relaxed">
-                Our commitment to quality and tradition has made us one of the most respected 
-                rum producers in the Caribbean, with awards and recognition from around the world.
+                Whether it's Vanilla, Chocolate, or Strawberry - you'll find we are committed to keeping our New Orleans identity as we made the rum taste just like the taffy...but for grown ups!
               </p>
             </div>
             <div className="grid grid-cols-3 gap-8">

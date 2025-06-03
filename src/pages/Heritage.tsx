@@ -49,7 +49,7 @@ const Heritage = () => {
               Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Heritage</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-              A legacy spanning over 150 years, rooted in tradition, driven by excellence
+              A legacy spanning over 100 years, rooted in tradition, driven by excellence
             </p>
           </div>
 
@@ -66,13 +66,10 @@ const Heritage = () => {
                 The Story Begins
               </h2>
               <p className="text-lg text-white/90 mb-6 leading-relaxed">
-                In 1873, Master Distiller James Caribbean set out to create the finest rum in the Caribbean. 
-                Using traditional methods passed down through generations, he established what would become 
-                one of the most respected rum houses in the world.
+                In 1899, the son of Italian immigrants, Sam Cortese, was riding the back of a wagon where he accidentally fell off in front of an incoming street car that resulted in having both of his legs severed off at the young age of 10.
               </p>
               <p className="text-lg text-white/90 leading-relaxed">
-                Today, we continue his legacy with the same commitment to quality, craftsmanship, and 
-                the authentic Caribbean spirit that has defined our brand for over a century.
+                Through perseverance, adversity, and tenacity, Sam found a way to survive and be successful by building the iconic Roman Chewing Candy wagon and selling salt water taffy out of it.
               </p>
             </div>
           </div>
@@ -85,17 +82,22 @@ const Heritage = () => {
               {milestones.map((milestone, index) => (
                 <div 
                   key={milestone.year}
-                  className={`flex items-center gap-8 animate-fade-in-up backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20 ${
-                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  }`}
+                  className="relative h-40 animate-fade-in-up backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
-                    {milestone.year}
+                  {/* Year number */}
+                  <div className={`absolute ${index % 2 === 0 ? 'left-8' : 'right-8'} top-1/2 transform -translate-y-1/2`}>
+                    <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
+                      {milestone.year}
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-2">{milestone.title}</h3>
-                    <p className="text-white/80">{milestone.description}</p>
+                  
+                  {/* Centered content */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <div className="text-center">
+                      <h3 className="text-2xl font-bold text-white mb-2">{milestone.title}</h3>
+                      <p className="text-white/80">{milestone.description}</p>
+                    </div>
                   </div>
                 </div>
               ))}
