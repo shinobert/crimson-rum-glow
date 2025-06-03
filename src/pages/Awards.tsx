@@ -5,34 +5,108 @@ import Footer from '@/components/Footer';
 const Awards = () => {
   const awards = [
     {
-      year: "2024",
-      title: "World's Best Rum",
-      organization: "International Wine & Spirit Competition",
-      product: "Master's Choice 21 Year",
-      medal: "Double Gold"
-    },
-    {
-      year: "2023",
-      title: "Best Caribbean Rum",
-      organization: "San Francisco World Spirits Competition",
-      product: "Caribbean Gold 8 Year",
+      year: "2014",
+      title: "WSWA Gold Spirits Winner",
+      organization: "Wine & Spirits Wholesalers of America",
+      product: "Chocolate Rum",
       medal: "Gold"
     },
     {
-      year: "2022",
-      title: "Rum of the Year",
-      organization: "Rum Masters Competition",
-      product: "Spiced Reserve 12 Year",
-      medal: "Master"
+      year: "2014",
+      title: "WSWA Silver Spirits Winner",
+      organization: "Wine & Spirits Wholesalers of America",
+      product: "Vanilla Rum",
+      medal: "Silver"
+    },
+    {
+      year: "2014",
+      title: "WSWA Spirits Winner",
+      organization: "Wine & Spirits Wholesalers of America",
+      product: "Roman Candy Rum",
+      medal: "Gold"
+    },
+    {
+      year: "2014",
+      title: "Gold Hot Mixology Award",
+      organization: "Hot Mixology Viewer's Choice Awards",
+      product: "Chocolate Rum",
+      medal: "Gold"
     },
     {
       year: "2021",
-      title: "Excellence in Distillation",
-      organization: "Caribbean Spirits Awards",
-      product: "Black Label 15 Year",
-      medal: "Platinum"
-    }
+      title: "Gold MASKED PR%F Award",
+      organization: "The Original PR%F Awards",
+      product: "Chocolate Rum",
+      medal: "Gold"
+    },
+    {
+      year: "2021",
+      title: "Silver MASKED PR%F Award",
+      organization: "The Original PR%F Awards",
+      product: "Vanilla Rum",
+      medal: "Silver"
+    },
+    {
+      year: "2021",
+      title: "Silver MASKED PR%F Award",
+      organization: "The Original PR%F Awards",
+      product: "Strawberry Rum",
+      medal: "Silver"
+    },
+    {
+      year: "2021",
+      title: "Silver UNMASKED PR%F Award",
+      organization: "The Original PR%F Awards",
+      product: "Chocolate Rum",
+      medal: "Silver"
+    },
+    {
+      year: "2021",
+      title: "Silver UNMASKED PR%F Award",
+      organization: "The Original PR%F Awards",
+      product: "Vanilla Rum",
+      medal: "Silver"
+    },
+    {
+      year: "2021",
+      title: "Silver UNMASKED PR%F Award",
+      organization: "The Original PR%F Awards",
+      product: "Strawberry Rum",
+      medal: "Silver"
+    },
+    
   ];
+
+  // Function to get medal image based on medal type and award title
+  const getMedalImage = (medalType, awardTitle) => {
+    // Special cases based on award titles
+    if (awardTitle.includes("WSWA Spirits Winner")) {
+      return '/Images/WSWA_Gold_Spirits_Winner.png';
+    }
+    
+    if (awardTitle.includes("Hot Mixology") && medalType.toLowerCase() === 'gold') {
+      return '/Images/Hot_Mixology_Gold.png';
+    }
+    
+    // PR%F Awards
+    if (awardTitle.includes("MASKED PR%F") || awardTitle.includes("UNMASKED PR%F")) {
+      if (medalType.toLowerCase() === 'gold') {
+        return '/Images/Gold_PR_F_Award.png';
+      } else if (medalType.toLowerCase() === 'silver') {
+        return '/Images/Silver_PR_F_Award.png';
+      }
+    }
+    
+    // Default cases based on medal type
+    switch(medalType.toLowerCase()) {
+      case 'gold':
+        return '/Images/WSWA_Gold_2014.png';
+      case 'silver':
+        return '/Images/WSWA_Silver_2014.png';
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
@@ -66,7 +140,7 @@ const Awards = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             <div className="md:col-span-2 lg:col-span-1 backdrop-blur-sm bg-rum-gold/10 rounded-2xl p-8 border border-rum-gold/30 text-center">
               <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">50+</div>
               <div className="text-white text-xl">International Awards</div>
@@ -79,12 +153,12 @@ const Awards = () => {
               <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">15</div>
               <div className="text-white text-xl">Master Awards</div>
             </div>
-          </div>
+          </div> */}
 
           <div className="space-y-6">
-            <h2 className="text-4xl font-bold text-center text-white mb-12 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+            {/* <h2 className="text-4xl font-bold text-center text-white mb-12 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
               Recent Recognition
-            </h2>
+            </h2> */}
             {awards.map((award, index) => (
               <div 
                 key={`${award.year}-${award.title}`}
@@ -102,10 +176,23 @@ const Awards = () => {
                   <div>
                     <p className="text-white font-medium">{award.product}</p>
                   </div>
-                  <div className="text-right">
-                    <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light text-rum-black px-4 py-2 rounded-full font-bold">
+                  <div className="text-right flex items-center justify-end">
+                    {getMedalImage(award.medal, award.title) && (
+                      <div className="mr-2 relative w-24 h-24">
+                        <img 
+                          src={getMedalImage(award.medal, award.title)} 
+                          alt={`${award.medal} Medal`}
+                          className="object-contain w-24 h-24"
+                        />
+                      </div>
+                    )}
+                    {/* <span className={`px-4 py-2 rounded-full font-bold ${
+                      award.medal.toLowerCase() === 'silver' 
+                        ? 'bg-gradient-to-r from-gray-300 to-gray-100 text-gray-800'
+                        : 'bg-gradient-to-r from-rum-gold to-rum-gold-light text-rum-black'
+                    }`}>
                       {award.medal}
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>

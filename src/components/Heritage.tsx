@@ -41,16 +41,16 @@ const Heritage = () => {
             </div>
             <div className="grid grid-cols-3 gap-8">
               <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
-                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">150+</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">100+</div>
                 <div className="text-white/80 text-sm">Years of Heritage</div>
               </div>
               <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
-                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">50+</div>
-                <div className="text-white/80 text-sm">International Awards</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">10</div>
+                <div className="text-white/80 text-sm">Prestigious Awards</div>
               </div>
               <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
-                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">12</div>
-                <div className="text-white/80 text-sm">Unique Blends</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">3</div>
+                <div className="text-white/80 text-sm">Unique Flavors</div>
               </div>
             </div>
           </div>
