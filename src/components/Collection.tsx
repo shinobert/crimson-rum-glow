@@ -12,10 +12,10 @@ const Collection = () => {
       description: "The perfect rum to mix with ANYTHING! Bursting with sweet vanilla flavor, it's the ultimate companion for those who like their drinks smooth, versatile, and full of character.",
       image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=600&q=80",
       tags: ["Smooth", "Vanilla", "Premium"],
-      bgGradient: "from-amber-100 via-yellow-50 to-cream-100",
+      bgGradient: "from-cream-100 via-vanilla-50 to-amber-50",
       accentColor: "amber-600",
       textColor: "text-amber-900",
-      cardColor: "bg-gradient-to-br from-amber-100 via-yellow-50 to-cream-100"
+      cardColor: "bg-gradient-to-br from-amber-50 via-cream-100 to-vanilla-100"
     },
     {
       name: "Chocolate Flavored",
@@ -55,6 +55,37 @@ const Collection = () => {
     setCurrentIndex((prev) => (prev - 1 + rums.length) % rums.length);
   };
 
+  const getCardPosition = (index: number) => {
+    const position = (index - currentIndex + rums.length) % rums.length;
+    
+    switch (position) {
+      case 0: // Active card (center)
+        return {
+          transform: 'translateX(0px) scale(1)',
+          zIndex: 30,
+          opacity: 1,
+        };
+      case 1: // Next card (right)
+        return {
+          transform: 'translateX(80px) scale(0.9)',
+          zIndex: 20,
+          opacity: 0.8,
+        };
+      case 2: // Previous card (left)
+        return {
+          transform: 'translateX(-80px) scale(0.9)',
+          zIndex: 10,
+          opacity: 0.8,
+        };
+      default:
+        return {
+          transform: 'translateX(0px) scale(0.8)',
+          zIndex: 0,
+          opacity: 0,
+        };
+    }
+  };
+
   return (
     <section id="collection" className="py-24 bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
       {/* Background Effects */}
@@ -88,22 +119,24 @@ const Collection = () => {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative h-[600px] flex items-center justify-center">
           {/* Cards Container */}
-          <div className="flex justify-center items-center gap-8 mb-12">
+          <div className="relative w-80 h-[500px] mx-auto">
             {rums.map((rum, index) => (
               <div
                 key={rum.name}
-                className={`w-80 h-[500px] ${rum.cardColor} rounded-2xl p-6 text-center transition-all duration-700 ease-in-out cursor-pointer border-2 shadow-2xl transform ${
-                  index === currentIndex 
-                    ? 'scale-105 z-30 border-rum-gold shadow-rum-gold/20' 
-                    : 'scale-95 opacity-80 hover:scale-100 hover:opacity-90'
-                }`}
+                className={`absolute inset-0 w-80 h-[500px] ${rum.cardColor} rounded-2xl p-6 text-center transition-all duration-700 ease-in-out cursor-pointer border-2 shadow-2xl`}
+                style={getCardPosition(index)}
                 onClick={() => setCurrentIndex(index)}
-                style={{
-                  transform: `translateX(${(index - currentIndex) * 20}px) scale(${index === currentIndex ? 1.05 : 0.95})`,
-                }}
               >
+                {/* Card Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-4 left-4 w-8 h-8 border-2 border-current rounded-full"></div>
+                  <div className="absolute top-4 right-4 w-8 h-8 border-2 border-current rounded-full"></div>
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-2 border-current rounded-full"></div>
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-2 border-current rounded-full"></div>
+                </div>
+
                 {/* Image */}
                 <div className="relative mb-6 overflow-hidden rounded-xl h-48">
                   <img 
@@ -137,9 +170,15 @@ const Collection = () => {
                   </p>
                   
                   <Button className={`px-6 bg-${rum.accentColor} hover:bg-${rum.accentColor}/80 text-white font-bold py-2 transition-all duration-500 transform hover:scale-105 shadow-xl`}>
-                    View Signature Cocktails
+                    View Cocktails
                   </Button>
                 </div>
+
+                {/* Card Corner Decorations */}
+                <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-current opacity-30"></div>
+                <div className="absolute top-2 right-2 w-3 h-3 border-r-2 border-t-2 border-current opacity-30"></div>
+                <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-current opacity-30"></div>
+                <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-current opacity-30"></div>
               </div>
             ))}
           </div>
@@ -160,7 +199,7 @@ const Collection = () => {
           </button>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-40">
             {rums.map((_, index) => (
               <button
                 key={index}
