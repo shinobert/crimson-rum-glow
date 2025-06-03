@@ -50,12 +50,12 @@ const Header = () => {
 
   const navLinks = [
     { to: "/", text: "Home" },
+    { to: "/cocktails", text: "Cocktails" },
     { to: "/heritage", text: "Heritage" },
     { to: "/awards", text: "Awards" },
     { to: "/events", text: "Events" },
-    { to: "/cocktails", text: "Cocktails" },
     { to: "/where-to-buy", text: "Where To Buy" },
-    { to: "/contact", text: "Contact" }
+    { to: "/contact", text: "Contact Us" }
   ];
 
   return (

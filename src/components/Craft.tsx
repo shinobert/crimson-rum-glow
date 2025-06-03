@@ -33,11 +33,11 @@ const Craft = () => {
             className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-rum-black/80 via-rum-red/40 to-transparent flex items-center">
-            <div className="p-12 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-rum-gold/30">
-              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">Master Distiller's Touch</h3>
-              <p className="text-lg text-white/90 leading-relaxed">
-                Each batch is carefully monitored by our master distiller, 
-                ensuring every bottle meets our exacting standards of excellence and carries forward our legacy of perfection.
+            <div className="p-8 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-rum-gold/30">
+              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">Not Your Grandpa's Candy
+              </h3>
+              <p className="text-lg text-white/90 leading-relaxed mb-8">
+                So how did we make the rum taste just like the taffy? Well it's simple: rum is made with molasses and so is our taffy, so much of the recipes are the same. We did the impossible making the world's first chocolate rum, and took vanilla and strawberry flavoring in the rum industry to the next level! 
               </p>
             </div>
           </div>

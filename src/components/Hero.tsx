@@ -30,23 +30,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-rum-black/50 via-transparent to-rum-black/30"></div>
       </div>
 
-      {/* Animated Gold Particles */}
-      {/* <div className="absolute inset-0 z-10">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-rum-gold rounded-full opacity-70 animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`,
-              boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
-            }}
-          ></div>
-        ))}
-      </div> */}
-
       {/* Gradient Orbs */}
       <div className="absolute inset-0 z-5">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-rum-red/30 to-rum-gold/20 rounded-full blur-3xl animate-float"></div>
@@ -63,13 +46,6 @@ const Hero = () => {
             A New Orleans Tradition, All Grown Up!
           </h3>
         </div>
-        
-        {/* <div className="animate-fade-in-up backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20" style={{ animationDelay: '0.6s' }}>
-          <p className="text-2xl md:text-3xl mb-12 text-white/90 font-light leading-relaxed">
-            Crafted with <span className="text-rum-gold font-semibold">passion</span>, aged to <span className="text-rum-gold font-semibold">perfection</span>.<br />
-            Experience the finest Caribbean tradition.
-          </p>
-        </div> */}
       </div>
 
       {/* Enhanced Scroll Indicator - Now Clickable */}

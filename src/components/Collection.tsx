@@ -11,29 +11,23 @@ import {
 const Collection = () => {
   const rums = [
     {
-      name: "Caribbean Gold",
-      description: "A smooth, rich rum with notes of vanilla and caramel, perfect for sipping",
+      name: "Vanilla Flavored",
+      description: "The perfect rum to mix with ANYTHING! Bursting with sweet vanilla flavor, it's the ultimate companion for those who like their drinks smooth, versatile, and full of character.",
       image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80",
       tags: ["Smooth", "Vanilla", "Premium"]
     },
     {
-      name: "Spiced Reserve",
-      description: "Complex spices meet tropical fruits in perfect harmony, aged to perfection",
+      name: "Chocolate Flavored",
+      description: "The FIRST Chocolate Rum to ever enter the scene of this industry. With it's bold, yet smooth flavor, you'll find the possibilities of new cocktails to be enjoyed are endless! Or just sip it straight.",
       image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=600&q=80",
-      tags: ["Spiced", "Complex", "Tropical"]
+      tags: ["Spiced", "Chocolate", "Sweet"]
     },
     {
-      name: "Master's Choice",
-      description: "Our finest expression, aged to absolute perfection with unmatched depth",
+      name: "Strawberry Flavored",
+      description: "Bright, sweet, and unapologetically playful - this Strawberry Rum takes center stage in any cocktail! A must-have for curious mixers and confident sippers alike.",
       image: "https://images.unsplash.com/photo-1582263309913-9dc184fa6ced?auto=format&fit=crop&w=600&q=80",
-      tags: ["Premium", "Aged", "Limited"]
+      tags: ["Premium", "Strawberry", "Limited"]
     },
-    {
-      name: "Black Label",
-      description: "Dark, mysterious, and incredibly smooth with hints of chocolate and oak",
-      image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80",
-      tags: ["Dark", "Chocolate", "Oak"]
-    }
   ];
 
   return (
@@ -65,7 +59,7 @@ const Collection = () => {
             Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Premium Collection</span>
           </h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            Discover our exceptional range of premium rums, each with its own unique character and story
+            Discover our sweet range of exceptional rums, each with its own unique character and story
           </p>
         </div>
 
@@ -86,21 +80,13 @@ const Collection = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-rum-black/80 via-transparent to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-rum-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  
-                  <div className="flex flex-wrap gap-2 justify-center mb-4">
-                    {rum.tags.map((tag) => (
-                      <span key={tag} className="px-3 py-1 text-xs bg-rum-gold/20 text-rum-gold rounded-full border border-rum-gold/30">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
+                
                   <h3 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">{rum.name}</h3>
                   <p className="text-white/70 mb-8 leading-relaxed">{rum.description}</p>
                   
                   <div className="flex justify-center">
-                    <Button className="px-8 bg-gradient-to-r from-rum-gold via-rum-gold-light to-rum-gold hover:from-rum-gold-dark hover:via-rum-gold hover:to-rum-gold-light text-rum-black font-bold py-3 transition-all duration-500 transform hover:scale-105 shadow-xl border border-rum-gold/50">
-                      View Recipe
+                    <Button className="px-8 bg-gradient-to-r from-rum-gold to-amber-500 hover:from-amber-500 hover:to-rum-gold text-rum-black font-bold py-3 transition-all duration-500 transform hover:scale-105 shadow-xl border border-rum-gold/50">
+                      View Signature Cocktails
                     </Button>
                   </div>
                 </div>
