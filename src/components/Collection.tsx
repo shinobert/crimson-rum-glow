@@ -37,6 +37,22 @@ const RumCard = memo(({
 }: RumCardProps) => {
   const position = (index - currentIndex + 3) % 3; // 0 = center, 1 = right, 2 = left
   
+  // Determine border color based on rum type
+  const getBorderColor = () => {
+    switch(rum.name) {
+      case "Chocolate Flavored":
+        return "border-white/40";
+      case "Strawberry Flavored":
+        return "border-black/40";
+      case "Vanilla Flavored":
+        return "border-amber-800/40";
+      default:
+        return "border-rum-gold/40";
+    }
+  };
+  
+  const borderColor = getBorderColor();
+  
   return (
     <div
       className={`absolute inset-0 w-96 h-[500px] ${rum.cardColor} ${index === currentIndex ? 'active-card' : ''} rounded-2xl p-8 text-center transition-all duration-700 ease-in-out cursor-pointer`}
@@ -71,6 +87,13 @@ const RumCard = memo(({
           style={{ opacity: 0.2 }}
         ></div>
       )}
+      
+      {/* New Orleans decorative elements */}
+      <div className={`absolute top-2 left-2 w-12 h-12 border-t-2 border-l-2 ${borderColor} rounded-tl-xl z-20`}></div>
+      <div className={`absolute top-2 right-2 w-12 h-12 border-t-2 border-r-2 ${borderColor} rounded-tr-xl z-20`}></div>
+      <div className={`absolute bottom-2 left-2 w-12 h-12 border-b-2 border-l-2 ${borderColor} rounded-bl-xl z-20`}></div>
+      <div className={`absolute bottom-2 right-2 w-12 h-12 border-b-2 border-r-2 ${borderColor} rounded-br-xl z-20`}></div>
+
       
       {/* Image */}
       <div className="relative mb-6 overflow-hidden rounded-xl h-48 z-20">
@@ -201,7 +224,7 @@ const Collection = () => {
     }
     
     .card-button {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
     }
     
