@@ -128,7 +128,7 @@ const BackgroundParticles = memo(() => {
       {particles.map((particle) => (
         <div
           key={particle.id}
-          className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-100 animate-float"
+          className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-30 animate-float"
           style={{
             left: particle.left,
             top: particle.top,
@@ -228,7 +228,7 @@ const Collection = () => {
       bgGradient: "from-cream-100 via-vanilla-50 to-amber-50",
       accentColor: "amber-600",
       textColor: "text-amber-900",
-      cardColor: "bg-gradient-to-br from-amber-50 via-cream-100 to-vanilla-100",
+      cardColor: "bg-gradient-to-br from-[#F8F4E3] via-[#FFF8E6] to-[#F5E9C9]",
       cocktailTab: "vanilla"
     },
     {
@@ -343,6 +343,24 @@ const Collection = () => {
 
           {/* Navigation Buttons */}
           {/* <NavigationButtons onPrev={prevSlide} onNext={nextSlide} /> */}
+        </div>
+
+        {/* Not Your Grandpa's Candy Section */}
+        <div className="mt-24 relative rounded-2xl overflow-hidden animate-scale-in group">
+          <img 
+            src="/Images/all-rums.jpg"
+            alt="Master's Distillery Collection"
+            className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-rum-black/80 via-rum-red/40 to-transparent flex items-center">
+            <div className="p-8 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-rum-gold/30">
+              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">Not Your Grandpa's Candy
+              </h3>
+              <p className="text-lg text-white/90 leading-relaxed mb-8">
+                So how did we make the rum taste just like the taffy? Well it's simple: rum is made with molasses and so is our taffy, so much of the recipes are the same. We did the impossible making the world's first chocolate rum, and took vanilla and strawberry flavoring in the rum industry to the next level! 
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

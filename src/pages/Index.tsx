@@ -1,10 +1,8 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Heritage from '@/components/Heritage';
 import Collection from '@/components/Collection';
-import Craft from '@/components/Craft';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -14,7 +12,6 @@ const Index = () => {
       <Hero />
       <Heritage />
       <Collection />
-      <Craft />
       <Footer />
     </div>
   );
