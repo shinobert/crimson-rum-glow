@@ -25,18 +25,18 @@ const Collection = () => {
       description: "The FIRST Chocolate Rum to ever enter the scene of this industry. With it's bold, yet smooth flavor, you'll find the possibilities of new cocktails to be enjoyed are endless! Or just sip it straight.",
       image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80",
       tags: ["Spiced", "Chocolate", "Sweet"],
-      bgGradient: "from-amber-800 via-orange-900 to-red-900",
-      accentColor: "orange-300",
-      textColor: "text-white"
+      bgGradient: "from-amber-100 via-orange-100 to-red-100",
+      accentColor: "orange-700",
+      textColor: "text-orange-900"
     },
     {
       name: "Strawberry Flavored",
       description: "Bright, sweet, and unapologetically playful - this Strawberry Rum takes center stage in any cocktail! A must-have for curious mixers and confident sippers alike.",
       image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=600&q=80",
       tags: ["Premium", "Strawberry", "Limited"],
-      bgGradient: "from-pink-800 via-red-700 to-rose-600",
-      accentColor: "pink-300",
-      textColor: "text-white"
+      bgGradient: "from-pink-100 via-red-100 to-rose-100",
+      accentColor: "pink-700",
+      textColor: "text-pink-900"
     },
   ];
 
@@ -89,7 +89,7 @@ const Collection = () => {
                   <div className="relative h-[500px] flex items-center justify-center">
                     {/* Main focused card */}
                     <div 
-                      className={`relative w-80 h-[480px] bg-gradient-to-br ${rum.bgGradient} rounded-2xl p-6 text-center hover:scale-105 transition-all duration-700 animate-scale-in group border-2 shadow-2xl transform-gpu z-20`}
+                      className={`relative w-80 h-[480px] bg-gradient-to-br ${rum.bgGradient} rounded-2xl p-6 text-center hover:scale-105 transition-all duration-700 animate-scale-in group border-2 shadow-2xl transform-gpu z-30`}
                       style={{ 
                         animationDelay: `${index * 0.2}s`,
                         transformStyle: 'preserve-3d',
@@ -148,15 +148,15 @@ const Collection = () => {
                       <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-current opacity-30"></div>
                     </div>
 
-                    {/* Background stacked cards for shuffle effect */}
+                    {/* Close background stacked cards for shuffle effect */}
                     <div 
-                      className={`absolute w-80 h-[480px] bg-gradient-to-br ${rums[(index + 1) % rums.length].bgGradient} rounded-2xl opacity-60 transform -rotate-3 translate-x-4 translate-y-2 z-10`}
+                      className={`absolute w-80 h-[480px] bg-gradient-to-br ${rums[(index + 1) % rums.length].bgGradient} rounded-2xl opacity-70 transform -rotate-1 translate-x-1 translate-y-1 z-20 border border-gray-300/30`}
                       style={{ 
                         boxShadow: '0 15px 30px -8px rgba(0, 0, 0, 0.3)'
                       }}
                     ></div>
                     <div 
-                      className={`absolute w-80 h-[480px] bg-gradient-to-br ${rums[(index + 2) % rums.length].bgGradient} rounded-2xl opacity-40 transform rotate-2 translate-x-8 translate-y-4 z-0`}
+                      className={`absolute w-80 h-[480px] bg-gradient-to-br ${rums[(index + 2) % rums.length].bgGradient} rounded-2xl opacity-50 transform rotate-1 translate-x-2 translate-y-2 z-10 border border-gray-300/20`}
                       style={{ 
                         boxShadow: '0 10px 20px -6px rgba(0, 0, 0, 0.2)'
                       }}
