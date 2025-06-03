@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -6,6 +6,18 @@ import { Medal } from 'lucide-react';
 
 const Cocktails = () => {
   const [expandedCocktail, setExpandedCocktail] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('chocolate');
+
+  // Read tab from URL on component mount
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const tabParam = searchParams.get('tab');
+    
+    // Check if the tab parameter exists and is valid
+    if (tabParam && ['chocolate', 'vanilla', 'strawberry'].includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, []);
 
   const cocktailsByFlavor = {
     chocolate: [
@@ -13,13 +25,13 @@ const Cocktails = () => {
         name: "Chocolate Rum Old Fashion",
         rum: "Chocolate Flavored Rum",
         ingredients: ["2 oz Roman Candy Chocolate Rum", "1 oz Aromatic Bitters", "1 oz Orange Bitters"],
-        description: "In a Scotch glass, WITHOUT ICE, shake 2-3 dashes each of the bitters. Pour in about 2 oz. of Roman Candy Chocolate Rum. Now, introduce ice to cover the cocktail. Stir with a cocktail stirrer for about 30 seconds. It’s ready to serve. (Note: It’s important that this cocktail is mixed this way. Don’t mix it directly over the ice. The ice comes last.) Enjoy!",
+        description: "In a Scotch glass, WITHOUT ICE, shake 2-3 dashes each of the bitters. Pour in about 2 oz. of Roman Candy Chocolate Rum. Now, introduce ice to cover the cocktail. Stir with a cocktail stirrer for about 30 seconds. It's ready to serve. (Note: It's important that this cocktail is mixed this way. Don't mix it directly over the ice. The ice comes last.) Enjoy!",
         image: "/Images/old-fashion.jpg"
       },
       {
         name: "Chocolate Martini",
         rum: "Chocolate Flavored Rum",
-        ingredients: ["1 ½ oz Chocolate Rum", "1 oz Orchata or Rumchata Cinnamon Cream", "1 oz Milk", "Just a dash of Miletti or Godiva Chocolate Liqueur. Hershey’s chocolate syrup will do. But just a dash or so. Ground Cinnamon"],
+        ingredients: ["1 ½ oz Chocolate Rum", "1 oz Orchata or Rumchata Cinnamon Cream", "1 oz Milk", "Just a dash of Miletti or Godiva Chocolate Liqueur. Hershey's chocolate syrup will do. But just a dash or so. Ground Cinnamon"],
         description: "Add all ingredients into a shaker, except ground Cinnamon, with ice. Shake and pour into a chilled martini glass or cocktail glass. Dust with Cinnamon and serve.",
         image: "/Images/chocolate-martini.jpg"
       }
@@ -154,11 +166,6 @@ const Cocktails = () => {
     );
   };
 
-  // Reset expanded cocktail when changing tabs
-  const handleTabChange = () => {
-    setExpandedCocktail(null);
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
       {/* Background particles */}
@@ -191,7 +198,15 @@ const Cocktails = () => {
             </p>
           </div>
 
-          <Tabs defaultValue="chocolate" className="w-full" onValueChange={handleTabChange}>
+          <Tabs value={activeTab} className="w-full" onValueChange={(value) => {
+            setActiveTab(value);
+            setExpandedCocktail(null);
+            
+            // Update URL without page reload
+            const url = new URL(window.location.href);
+            url.searchParams.set('tab', value);
+            window.history.pushState({}, '', url);
+          }}>
             <TabsList className="grid w-full grid-cols-3 mb-8 md:mb-12 bg-rum-black/50 border border-rum-gold/20">
               <TabsTrigger 
                 value="chocolate" 

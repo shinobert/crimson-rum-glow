@@ -1,12 +1,225 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// Define types
+type Rum = {
+  name: string;
+  description: string;
+  image: string;
+  tags: string[];
+  bgGradient: string;
+  accentColor: string;
+  textColor: string;
+  cardColor: string;
+  cocktailTab: string;
+};
+
+type RumCardProps = {
+  rum: Rum;
+  index: number;
+  currentIndex: number;
+  getCardPosition: (index: number) => {
+    transform: string;
+    zIndex: number;
+    opacity: number;
+  };
+  onClick: () => void;
+};
+
+// Create a memoized card component to prevent unnecessary re-renders
+const RumCard = memo(({ 
+  rum, 
+  index, 
+  currentIndex, 
+  getCardPosition, 
+  onClick 
+}: RumCardProps) => {
+  const position = (index - currentIndex + 3) % 3; // 0 = center, 1 = right, 2 = left
+  
+  return (
+    <div
+      className={`absolute inset-0 w-96 h-[500px] ${rum.cardColor} ${index === currentIndex ? 'active-card' : ''} rounded-2xl p-8 text-center transition-all duration-700 ease-in-out cursor-pointer`}
+      style={{
+        ...getCardPosition(index),
+      }}
+      onClick={onClick}
+      onTouchStart={(e) => {
+        // For touch devices, capture the touch start event
+        const parentElement = e.currentTarget.parentElement;
+        if (parentElement) {
+          const event = new Event('mouseenter');
+          parentElement.dispatchEvent(event);
+        }
+      }}
+      onTouchEnd={(e) => {
+        // When touch ends, simulate mouse leave after a short delay
+        // This allows the click event to fire first
+        setTimeout(() => {
+          const parentElement = e.currentTarget.parentElement;
+          if (parentElement) {
+            const event = new Event('mouseleave');
+            parentElement.dispatchEvent(event);
+          }
+        }, 1000); // 1 second delay before resuming
+      }}
+    >
+      {/* Darkening overlay for side cards */}
+      {position !== 0 && (
+        <div 
+          className="absolute inset-0 bg-black rounded-2xl transition-opacity duration-700 ease-in-out z-10"
+          style={{ opacity: 0.2 }}
+        ></div>
+      )}
+      
+      {/* Image */}
+      <div className="relative mb-6 overflow-hidden rounded-xl h-48 z-20">
+        <img 
+          src={rum.image} 
+          alt={rum.name}
+          className="w-full h-full object-cover transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-20">
+        <h3 className={`text-2xl font-bold mb-3 ${rum.textColor} font-eb-garamond`}>
+          {rum.name}
+        </h3>
+        
+        <p className={`${rum.name === "Chocolate Flavored" ? 'text-[#FFF8E1]' : `${rum.textColor}/80`} mb-6 leading-relaxed text-base font-medium`}>
+          {rum.description}
+        </p>
+        
+        <a 
+          href={`/cocktails?tab=${rum.cocktailTab}`}
+          onClick={(e) => e.stopPropagation()}
+          className={`inline-block px-6 bg-${rum.accentColor} hover:bg-${rum.accentColor}/80 ${rum.name === "Chocolate Flavored" ? 'text-[#FFF8E1]' : 'text-black'} font-bold py-2 rounded-md transition-all duration-300 transform hover:scale-105 card-button`}
+        >
+          View Signature Cocktails
+        </a>
+      </div>
+    </div>
+  );
+});
+
+RumCard.displayName = 'RumCard';
+
+// Create a memoized background component
+const BackgroundParticles = memo(() => {
+  // Generate random positions once when component mounts
+  const particles = React.useMemo(() => 
+    [...Array(10)].map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 3}s`,
+      duration: `${4 + Math.random() * 2}s`,
+    })), 
+  []);
+
+  return (
+    <div className="absolute inset-0">
+      <div className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-rum-gold/10 to-rum-red/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-gradient-to-r from-rum-red/10 to-rum-gold/10 rounded-full blur-3xl"></div>
+      
+      {/* Golden particles */}
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-100 animate-float"
+          style={{
+            left: particle.left,
+            top: particle.top,
+            animationDelay: particle.delay,
+            animationDuration: particle.duration,
+            boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
+          }}
+        ></div>
+      ))}
+    </div>
+  );
+});
+
+BackgroundParticles.displayName = 'BackgroundParticles';
+
+// Create a memoized header component
+const SectionHeader = memo(() => {
+  return (
+    <div className="text-center mb-20 animate-fade-in-up">
+      <h2 className="text-6xl md:text-7xl font-bold text-white mb-8 font-eb-garamond">
+        Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Premium Collection</span>
+      </h2>
+      <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+        Discover our sweet range of exceptional rums, each with its own unique character and story
+      </p>
+    </div>
+  );
+});
+
+SectionHeader.displayName = 'SectionHeader';
+
+// Create a memoized navigation buttons component
+type NavigationButtonsProps = {
+  onPrev: () => void;
+  onNext: () => void;
+};
+
+const NavigationButtons = memo(({ onPrev, onNext }: NavigationButtonsProps) => {
+  return (
+    <>
+      <button
+        onClick={onPrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-rum-gold/20 border border-rum-gold text-rum-gold hover:bg-rum-gold hover:text-rum-black backdrop-blur-sm p-3 rounded-full transition-all duration-300 z-40"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+      
+      <button
+        onClick={onNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-rum-gold/20 border border-rum-gold text-rum-gold hover:bg-rum-gold hover:text-rum-black backdrop-blur-sm p-3 rounded-full transition-all duration-300 z-40"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
+    </>
+  );
+});
+
+NavigationButtons.displayName = 'NavigationButtons';
+
 const Collection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const rums = [
+  // Add CSS for active card and button shadows
+  const customStyles = `
+    .active-card {
+      opacity: 1 !important;
+      background-color: rgba(255, 255, 255, 1) !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card-button {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .card-button:hover {
+      box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    }
+    
+    .carousel-paused .active-card {
+      box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.6) !important;
+    }
+    
+    .active-card:hover {
+      transform: translateX(0) translateY(-10px) scale(1) rotate(0deg) !important;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6) !important;
+    }
+  `;
+
+  const rums: Rum[] = [
     {
       name: "Vanilla Flavored",
       description: "The perfect rum to mix with ANYTHING! Bursting with sweet vanilla flavor, it's the ultimate companion for those who like their drinks smooth, versatile, and full of character.",
@@ -15,17 +228,19 @@ const Collection = () => {
       bgGradient: "from-cream-100 via-vanilla-50 to-amber-50",
       accentColor: "amber-600",
       textColor: "text-amber-900",
-      cardColor: "bg-gradient-to-br from-amber-50 via-cream-100 to-vanilla-100"
+      cardColor: "bg-gradient-to-br from-amber-50 via-cream-100 to-vanilla-100",
+      cocktailTab: "vanilla"
     },
     {
       name: "Chocolate Flavored",
       description: "The FIRST Chocolate Rum to ever enter the scene of this industry. With it's bold, yet smooth flavor, you'll find the possibilities of new cocktails to be endless! Or just sip it straight.",
       image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80",
       tags: ["Spiced", "Chocolate", "Sweet"],
-      bgGradient: "from-amber-100 via-orange-200 to-yellow-100",
+      bgGradient: "bg-gradient-to-br from-[#3B2106] via-[#6B4226] to-[#3B2106]",
       accentColor: "orange-600",
-      textColor: "text-orange-900",
-      cardColor: "bg-gradient-to-br from-orange-100 via-amber-100 to-yellow-100"
+      textColor: "text-[#FFF8E1]",
+      cardColor: "bg-gradient-to-br from-[#3B2106] via-[#6B4226] to-[#3B2106]",
+      cocktailTab: "chocolate"
     },
     {
       name: "Strawberry Flavored",
@@ -35,181 +250,99 @@ const Collection = () => {
       bgGradient: "from-pink-100 via-rose-100 to-red-100",
       accentColor: "pink-600",
       textColor: "text-pink-900",
-      cardColor: "bg-gradient-to-br from-pink-100 via-rose-100 to-red-100"
+      cardColor: "bg-gradient-to-br from-pink-400 via-rose-400 to-red-400",
+      cocktailTab: "strawberry"
     },
   ];
 
   // Auto-advance carousel
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % rums.length);
-    }, 4000);
-    return () => clearInterval(interval);
+    // Only set up the interval if not paused
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % rums.length);
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+    // Return empty cleanup function when paused
+    return () => {};
+  }, [rums.length, isPaused]);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % rums.length);
   }, [rums.length]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % rums.length);
-  };
-
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + rums.length) % rums.length);
-  };
+  }, [rums.length]);
 
-  const getCardPosition = (index: number) => {
+  const getCardPosition = useCallback((index: number) => {
     const position = (index - currentIndex + rums.length) % rums.length;
     
     switch (position) {
       case 0: // Active card (center)
         return {
-          transform: 'translateX(0px) scale(1)',
+          transform: 'translateX(0px) translateY(0) scale(1) rotate(0deg)',
           zIndex: 30,
           opacity: 1,
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
         };
       case 1: // Next card (right)
         return {
-          transform: 'translateX(80px) scale(0.9)',
+          transform: 'translateX(100px) translateY(0) scale(0.9) rotate(5deg)',
           zIndex: 20,
-          opacity: 0.8,
+          opacity: 0.95,
+          boxShadow: '15px 15px 30px -5px rgba(0, 0, 0, 0.5)'
         };
       case 2: // Previous card (left)
         return {
-          transform: 'translateX(-80px) scale(0.9)',
+          transform: 'translateX(-100px) translateY(0) scale(0.9) rotate(-5deg)',
           zIndex: 10,
-          opacity: 0.8,
+          opacity: 0.95,
+          boxShadow: '-15px 15px 30px -5px rgba(0, 0, 0, 0.5)'
         };
       default:
         return {
-          transform: 'translateX(0px) scale(0.8)',
+          transform: 'translateX(0px) translateY(0) scale(0.8) rotate(0deg)',
           zIndex: 0,
-          opacity: 0,
+          opacity: 0.9,
+          boxShadow: '0 10px 20px -5px rgba(0, 0, 0, 0.3)'
         };
     }
-  };
+  }, [currentIndex, rums.length]);
 
   return (
     <section id="collection" className="py-24 bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
+      {/* Add style for active card */}
+      <style>{customStyles}</style>
+      
       {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-rum-gold/10 to-rum-red/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-gradient-to-r from-rum-red/10 to-rum-gold/10 rounded-full blur-3xl"></div>
-        
-        {/* Golden particles */}
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-30 animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${4 + Math.random() * 2}s`,
-              boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
-            }}
-          ></div>
-        ))}
-      </div>
+      <BackgroundParticles />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20 animate-fade-in-up">
-          <h2 className="text-6xl md:text-7xl font-bold text-white mb-8 font-eb-garamond">
-            Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Premium Collection</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            Discover our sweet range of exceptional rums, each with its own unique character and story
-          </p>
-        </div>
+        <SectionHeader />
 
         <div className="relative h-[600px] flex items-center justify-center">
           {/* Cards Container */}
-          <div className="relative w-80 h-[500px] mx-auto">
+          <div 
+            className={`relative w-96 h-[500px] mx-auto ${isPaused ? 'carousel-paused' : ''}`}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {rums.map((rum, index) => (
-              <div
+              <RumCard
                 key={rum.name}
-                className={`absolute inset-0 w-80 h-[500px] ${rum.cardColor} rounded-2xl p-6 text-center transition-all duration-700 ease-in-out cursor-pointer border-2 shadow-2xl`}
-                style={getCardPosition(index)}
+                rum={rum}
+                index={index}
+                currentIndex={currentIndex}
+                getCardPosition={getCardPosition}
                 onClick={() => setCurrentIndex(index)}
-              >
-                {/* Card Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-4 left-4 w-8 h-8 border-2 border-current rounded-full"></div>
-                  <div className="absolute top-4 right-4 w-8 h-8 border-2 border-current rounded-full"></div>
-                  <div className="absolute bottom-4 left-4 w-8 h-8 border-2 border-current rounded-full"></div>
-                  <div className="absolute bottom-4 right-4 w-8 h-8 border-2 border-current rounded-full"></div>
-                </div>
-
-                {/* Image */}
-                <div className="relative mb-6 overflow-hidden rounded-xl h-48">
-                  <img 
-                    src={rum.image} 
-                    alt={rum.name}
-                    className="w-full h-full object-cover transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className={`text-2xl font-bold mb-3 ${rum.textColor} font-eb-garamond`}>
-                    {rum.name}
-                  </h3>
-                  
-                  {/* Tags */}
-                  <div className="flex justify-center gap-2 mb-4">
-                    {rum.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className={`px-3 py-1 text-xs font-semibold bg-${rum.accentColor}/20 ${rum.textColor} rounded-full border border-${rum.accentColor}/50`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <p className={`${rum.textColor}/80 mb-6 leading-relaxed text-sm`}>
-                    {rum.description}
-                  </p>
-                  
-                  <Button className={`px-6 bg-${rum.accentColor} hover:bg-${rum.accentColor}/80 text-white font-bold py-2 transition-all duration-500 transform hover:scale-105 shadow-xl`}>
-                    View Cocktails
-                  </Button>
-                </div>
-
-                {/* Card Corner Decorations */}
-                <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-current opacity-30"></div>
-                <div className="absolute top-2 right-2 w-3 h-3 border-r-2 border-t-2 border-current opacity-30"></div>
-                <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-current opacity-30"></div>
-                <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-current opacity-30"></div>
-              </div>
+              />
             ))}
           </div>
 
           {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-rum-gold/20 border border-rum-gold text-rum-gold hover:bg-rum-gold hover:text-rum-black backdrop-blur-sm p-3 rounded-full transition-all duration-300 z-40"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-rum-gold/20 border border-rum-gold text-rum-gold hover:bg-rum-gold hover:text-rum-black backdrop-blur-sm p-3 rounded-full transition-all duration-300 z-40"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-
-          {/* Dots Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-            {rums.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-rum-gold' : 'bg-rum-gold/30'
-                }`}
-              />
-            ))}
-          </div>
+          {/* <NavigationButtons onPrev={prevSlide} onNext={nextSlide} /> */}
         </div>
       </div>
     </section>
