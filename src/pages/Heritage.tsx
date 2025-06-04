@@ -58,10 +58,10 @@ const Heritage = () => {
               <img 
                 src="/Images/cart.jpg" 
                 alt="Traditional Roman Candy Cart"
-                className="rounded-2xl shadow-2xl border border-rum-gold/30 w-full h-auto object-cover"
+                className="rounded-2xl shadow-2xl border border-rum-gold/30 w-full h-full object-cover max-h-[500px]"
               />
             </div>
-            <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20">
+            <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl py-4 px-8 border border-rum-gold/20">
               <h2 className="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                 The Story Begins
               </h2>
@@ -69,7 +69,7 @@ const Heritage = () => {
                 In 1899, the son of Italian immigrants, Sam Cortese, was riding the back of a wagon where he accidentally fell off in front of an incoming street car that resulted in having both of his legs severed off at the young age of 10.
               </p>
               <p className="text-lg text-white/90 leading-relaxed">
-                Through perseverance, adversity, and tenacity, Sam found a way to survive and be successful by building the iconic Roman Chewing Candy wagon and selling salt water taffy out of it.
+                Through perseverance, adversity, and tenacity, Sam found a way to survive and be successful by building the iconic Roman Chewing Candy wagon and selling salt water taffy out of it. His story inspires us as we continue to build upon his legacy.
               </p>
             </div>
           </div>

@@ -194,7 +194,7 @@ const Cocktails = () => {
               Signature <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Cocktails</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-              Expertly crafted cocktails that showcase the versatility and complexity of our premium rums
+              Expertly crafted cocktails that showcase the versatility of our award winning rums, as well as pay homage to our roots
             </p>
           </div>
 

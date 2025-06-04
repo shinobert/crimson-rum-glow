@@ -1,6 +1,23 @@
 import React from 'react';
 
 const Heritage = () => {
+  // Stats data with links
+  const stats = [
+    { value: "100+", label: "Years of Heritage", link: "/heritage" },
+    { value: "10", label: "Prestigious Awards", link: "/awards" },
+    { value: "3", label: "Unique Flavors", link: "#collection", isScrollLink: true }
+  ];
+
+  const handleScrollLink = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    if (link.startsWith('#')) {
+      e.preventDefault();
+      const element = document.getElementById(link.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <section id="heritage" className="py-24 bg-gradient-to-br from-rum-black to-rum-red-dark relative overflow-hidden">
       {/* Background Effects */}
@@ -40,18 +57,17 @@ const Heritage = () => {
               </p>
             </div>
             <div className="grid grid-cols-3 gap-8">
-              <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
-                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">100+</div>
-                <div className="text-white/80 text-sm">Years of Heritage</div>
-              </div>
-              <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
-                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">10</div>
-                <div className="text-white/80 text-sm">Prestigious Awards</div>
-              </div>
-              <div className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30">
-                <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">3</div>
-                <div className="text-white/80 text-sm">Unique Flavors</div>
-              </div>
+              {stats.map((stat, index) => (
+                <a 
+                  key={index}
+                  href={stat.link}
+                  onClick={(e) => stat.isScrollLink ? handleScrollLink(e, stat.link) : undefined}
+                  className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3),0_8px_20px_rgba(0,0,0,0.6)] hover:bg-rum-gold/20 hover:scale-105 cursor-pointer"
+                >
+                  <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">{stat.value}</div>
+                  <div className="text-white/80 text-sm">{stat.label}</div>
+                </a>
+              ))}
             </div>
           </div>
           
