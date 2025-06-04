@@ -376,7 +376,7 @@ const Collection = () => {
             className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-rum-black/80 via-rum-red/40 to-transparent flex items-center">
-            <div className="p-8 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
+            <div className="p-8 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-rum-gold/40 hover:border-rum-gold/50 transition-all duration-300">
               <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">Not Your Grandpa's Candy
               </h3>
               <p className="text-lg text-white/90 leading-relaxed mb-8">

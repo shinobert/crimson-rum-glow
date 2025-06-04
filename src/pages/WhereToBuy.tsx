@@ -6,51 +6,30 @@ import { Button } from "@/components/ui/button";
 const WhereToBuy = () => {
   const retailers = [
     {
-      name: "Premium Spirits & Wine",
-      location: "Miami, FL",
+      name: "Total Wine & More",
+      location: "New Orleans, LA",
       type: "Retail Store",
       products: "Full Collection Available"
     },
     {
-      name: "Caribbean Liquor Emporium",
-      location: "New York, NY", 
+      name: "Red, White, & Brew",
+      location: "Hammond, LA", 
       type: "Retail Store",
-      products: "Exclusive Limited Editions"
+      products: "Full Collection Available"
     },
     {
-      name: "Spirits Direct Online",
-      location: "Nationwide Shipping",
-      type: "Online Retailer",
-      products: "Complete Range + Delivery"
-    },
-    {
-      name: "The Rum House",
-      location: "Los Angeles, CA",
-      type: "Specialty Store",
-      products: "Expert Curation"
+      name: "Dorignac's",
+      location: "Metairie, LA",
+      type: "Retail Store",
+      products: "Full Collection Available"
     }
   ];
 
   const regions = [
     {
       region: "North America",
-      countries: ["United States", "Canada", "Mexico"],
-      availability: "Widely Available"
-    },
-    {
-      region: "Caribbean",
-      countries: ["Barbados", "Jamaica", "Puerto Rico", "Dominican Republic"],
-      availability: "Exclusive Collections"
-    },
-    {
-      region: "Europe",
-      countries: ["United Kingdom", "Germany", "France", "Netherlands"],
-      availability: "Select Products"
-    },
-    {
-      region: "Asia Pacific",
-      countries: ["Japan", "Australia", "Singapore"],
-      availability: "Premium Range"
+      countries: ["United States"],
+      availability: "Locally Available"
     }
   ];
 
