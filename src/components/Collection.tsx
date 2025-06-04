@@ -256,7 +256,7 @@ const Collection = () => {
     },
     {
       name: "Chocolate Flavored",
-      description: "The FIRST Chocolate Rum to ever enter the scene of this industry. With it's bold, yet smooth flavor, you'll find the possibilities of new cocktails to be endless! Or just sip it straight.",
+      description: "The FIRST Chocolate Rum to ever enter the scene of this industry. With it's bold, yet smooth flavor, you'll find the possibilities of new cocktails to be endless!",
       image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80",
       tags: ["Spiced", "Chocolate", "Sweet"],
       bgGradient: "bg-gradient-to-br from-[#3B2106] via-[#6B4226] to-[#3B2106]",

@@ -1,9 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success?: boolean;
+    message?: string;
+  }>({});
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({});
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          success: true,
+          message: 'Thank you! Your message has been sent.'
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus({
+          success: false,
+          message: data.error || 'Something went wrong. Please try again.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        success: false,
+        message: 'Network error. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
       {/* Background particles */}
@@ -42,37 +95,66 @@ const Contact = () => {
                 <h2 className="text-3xl font-bold text-white mb-8 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                   Send Us a Message
                 </h2>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div>
-                    <label className="block text-white/80 mb-2">Name</label>
+                    <label className="block text-white/80 mb-2" htmlFor="name">Name</label>
                     <input 
+                      id="name"
+                      name="name"
                       type="text" 
                       className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 mb-2">Email</label>
+                    <label className="block text-white/80 mb-2" htmlFor="email">Email</label>
                     <input 
+                      id="email"
+                      name="email"
                       type="email" 
                       className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 mb-2">Subject</label>
+                    <label className="block text-white/80 mb-2" htmlFor="subject">Subject</label>
                     <input 
+                      id="subject"
+                      name="subject"
                       type="text" 
                       className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 mb-2">Message</label>
+                    <label className="block text-white/80 mb-2" htmlFor="message">Message</label>
                     <textarea 
+                      id="message"
+                      name="message"
                       rows={5}
                       className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors resize-none"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
                     ></textarea>
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold py-4">
-                    Send Message
+                  {submitStatus.message && (
+                    <div className={`p-3 rounded-lg ${submitStatus.success ? 'bg-green-500/20 text-green-200' : 'bg-red-500/20 text-red-200'}`}>
+                      {submitStatus.message}
+                    </div>
+                  )}
+                  <Button 
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold py-4"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </div>

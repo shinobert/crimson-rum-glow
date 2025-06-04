@@ -4,11 +4,11 @@ import Footer from '@/components/Footer';
 
 const Heritage = () => {
   const milestones = [
-    { year: "1873", title: "The Beginning", description: "Founded by Master Distiller James Caribbean" },
-    { year: "1920", title: "Golden Era", description: "Introduced our signature aging process" },
-    { year: "1965", title: "International Recognition", description: "First international award at Paris Spirits Competition" },
-    { year: "2010", title: "Modern Innovation", description: "State-of-the-art distillery completed" },
-    { year: "2024", title: "Legacy Continues", description: "150+ years of uncompromising quality" }
+    { year: "1915", title: "The Wagon Was Built", description: "Sam sold coal in the winter, watermelons in the summer, and taffy on the side" },
+    { year: "1946", title: "The Candy Man", description: "Sam started selling exclusively Roman Chewing Taffy from the wagon" },
+    { year: "1969", title: "A Bitter Goodbye", description: "Sam passed away" },
+    { year: "1971", title: "Tradition Continued", description: "Sam's grandson, Ronnie Kottemann, became the new Candy Man" },
+    { year: "2014", title: "A Sweet Surprise", description: "Roman Candy Rum was birthed" }
   ];
 
   return (
