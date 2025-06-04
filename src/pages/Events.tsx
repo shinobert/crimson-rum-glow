@@ -49,7 +49,7 @@ const Events = () => {
             {upcomingEvents.map((event, index) => (
               <div 
                 key={event.title}
-                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20 hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
+                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="mb-6">
