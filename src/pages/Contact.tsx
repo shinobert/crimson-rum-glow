@@ -3,7 +3,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 
-const Contact = () => {
+// ContactForm component to isolate form state changes
+const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -58,6 +59,78 @@ const Contact = () => {
   };
 
   return (
+    <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20">
+      <h2 className="text-3xl font-bold text-white mb-8 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+        Send Us a Message
+      </h2>
+      <form className="space-y-6" onSubmit={handleSubmit}>
+        <div>
+          <label className="block text-white/80 mb-2" htmlFor="name">Name</label>
+          <input 
+            id="name"
+            name="name"
+            type="text" 
+            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-white/80 mb-2" htmlFor="email">Email</label>
+          <input 
+            id="email"
+            name="email"
+            type="email" 
+            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-white/80 mb-2" htmlFor="subject">Subject</label>
+          <input 
+            id="subject"
+            name="subject"
+            type="text" 
+            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-white/80 mb-2" htmlFor="message">Message</label>
+          <textarea 
+            id="message"
+            name="message"
+            rows={5}
+            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors resize-none"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        {submitStatus.message && (
+          <div className={`p-3 rounded-lg ${submitStatus.success ? 'bg-green-500/20 text-green-200' : 'bg-red-500/20 text-red-200'}`}>
+            {submitStatus.message}
+          </div>
+        )}
+        <Button 
+          type="submit"
+          className="w-full bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold py-4"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Sending...' : 'Send Message'}
+        </Button>
+      </form>
+    </div>
+  );
+};
+
+const Contact = () => {
+  return (
     <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
       {/* Background particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -91,73 +164,7 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             <div className="animate-fade-in-left">
-              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20">
-                <h2 className="text-3xl font-bold text-white mb-8 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
-                  Send Us a Message
-                </h2>
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div>
-                    <label className="block text-white/80 mb-2" htmlFor="name">Name</label>
-                    <input 
-                      id="name"
-                      name="name"
-                      type="text" 
-                      className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-white/80 mb-2" htmlFor="email">Email</label>
-                    <input 
-                      id="email"
-                      name="email"
-                      type="email" 
-                      className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-white/80 mb-2" htmlFor="subject">Subject</label>
-                    <input 
-                      id="subject"
-                      name="subject"
-                      type="text" 
-                      className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-white/80 mb-2" htmlFor="message">Message</label>
-                    <textarea 
-                      id="message"
-                      name="message"
-                      rows={5}
-                      className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors resize-none"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                    ></textarea>
-                  </div>
-                  {submitStatus.message && (
-                    <div className={`p-3 rounded-lg ${submitStatus.success ? 'bg-green-500/20 text-green-200' : 'bg-red-500/20 text-red-200'}`}>
-                      {submitStatus.message}
-                    </div>
-                  )}
-                  <Button 
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold py-4"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
-                </form>
-              </div>
+              <ContactForm />
             </div>
 
             <div className="animate-fade-in-right space-y-8">
