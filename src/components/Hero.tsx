@@ -39,7 +39,7 @@ const Hero = () => {
       {/* Main Content */}
       <div className="relative z-20 text-center text-white px-6 max-w-6xl">
         <div className="animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl mb-10 text-white uppercase tracking-wider animate-fade-in-up font-eb-garamond" style={{ textShadow: '-2px 1px 0 #FFD700, -4px 3px 0 #8B0000', fontWeight: 800 }}>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 text-white uppercase tracking-normal animate-fade-in-up font-eb-garamond" style={{ textShadow: '-2px 1px 0 #FFD700, -4px 3px 0 #8B0000', fontWeight: 800, transform: 'scaleY(1.2)' }}>
             ROMAN CANDY RUM
           </h1>
           <h3 className="text-xl md:text-2xl lg:text-3xl font-light mb-10 text-white uppercase tracking-widest animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
