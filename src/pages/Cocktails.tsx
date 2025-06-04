@@ -298,7 +298,7 @@ const Cocktails = () => {
             <div ref={tabsRef} className="grid w-full grid-cols-3 mb-8 md:mb-12 bg-rum-black/50 border border-transparent rounded-md transition-all duration-300 relative">
               {/* Sliding background indicator */}
               <div 
-                className="absolute h-full rounded-md transition-all duration-300 ease-in-out z-0" 
+                className="absolute h-full rounded-md transition-all duration-500 ease-in-out z-0" 
                 style={{ 
                   left: indicatorStyle.left, 
                   width: indicatorStyle.width,
