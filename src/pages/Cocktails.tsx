@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -7,6 +7,43 @@ import { Medal } from 'lucide-react';
 const Cocktails = () => {
   const [expandedCocktail, setExpandedCocktail] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('chocolate');
+  const contentRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const [indicatorStyle, setIndicatorStyle] = useState({ 
+    left: '0%', 
+    width: '33.333%',
+    background: 'linear-gradient(to right, #402717, #5D3522)'
+  });
+
+  // Generate fixed positions for particles to prevent re-renders
+  const particles = useMemo(() => {
+    return Array.from({ length: 15 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 3}s`,
+      duration: `${4 + Math.random() * 2}s`
+    }));
+  }, []);
+
+  // Update indicator position when tab changes
+  useEffect(() => {
+    if (tabsRef.current) {
+      const tabIndex = ['chocolate', 'vanilla', 'strawberry'].indexOf(activeTab);
+      if (tabIndex >= 0) {
+        const background = 
+          activeTab === 'chocolate' ? 'linear-gradient(to right, #402717, #5D3522)' :
+          activeTab === 'vanilla' ? 'linear-gradient(to right, #F8F4E3, #F5E9C9)' :
+          'linear-gradient(to right, #FBCFE8, #FDA4AF)'; // strawberry
+        
+        setIndicatorStyle({
+          left: `${tabIndex * 33.333}%`,
+          width: '33.333%',
+          background
+        });
+      }
+    }
+  }, [activeTab]);
 
   // Read tab from URL on component mount
   useEffect(() => {
@@ -166,19 +203,44 @@ const Cocktails = () => {
     );
   };
 
+  const handleTabChange = (value: string) => {
+    // Don't update state if it's the same tab
+    if (value === activeTab) return;
+    
+    setActiveTab(value);
+    setExpandedCocktail(null);
+    
+    // Update URL without page reload
+    const url = new URL(window.location.href);
+    url.searchParams.set('tab', value);
+    window.history.replaceState({}, '', url);
+    
+    // Show the correct content without rerendering
+    if (contentRef.current) {
+      const allContents = contentRef.current.querySelectorAll('[data-tab-content]');
+      allContents.forEach(content => {
+        if ((content as HTMLElement).dataset.tabValue === value) {
+          content.classList.remove('hidden');
+        } else {
+          content.classList.add('hidden');
+        }
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
       {/* Background particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
+        {particles.map((particle) => (
           <div
-            key={i}
+            key={particle.id}
             className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-30 animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${4 + Math.random() * 2}s`,
+              left: particle.left,
+              top: particle.top,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration,
               boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
             }}
           ></div>
@@ -198,51 +260,96 @@ const Cocktails = () => {
             </p>
           </div>
 
-          <Tabs value={activeTab} className="w-full" onValueChange={(value) => {
-            setActiveTab(value);
-            setExpandedCocktail(null);
-            
-            // Update URL without page reload
-            const url = new URL(window.location.href);
-            url.searchParams.set('tab', value);
-            window.history.pushState({}, '', url);
-          }}>
-            <TabsList className="grid w-full grid-cols-3 mb-8 md:mb-12 bg-rum-black/50 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
-              <TabsTrigger 
-                value="chocolate" 
-                className="data-[state=active]:bg-rum-black/90 data-[state=active]:text-rum-gold data-[state=active]:border-b-2 data-[state=active]:border-rum-gold text-white hover:text-rum-gold transition-colors text-sm md:text-base flex items-center justify-center"
+          <div className="w-full">
+            {/* Add keyframes for medal wiggle animation */}
+            <style>
+              {`
+                @keyframes wiggle {
+                  0% { transform: rotate(0deg); }
+                  25% { transform: rotate(-8deg); }
+                  50% { transform: rotate(0deg); }
+                  75% { transform: rotate(8deg); }
+                  100% { transform: rotate(0deg); }
+                }
+                button:hover .medal-icon {
+                  animation: wiggle 0.6s ease-in-out;
+                }
+                .medal-gold {
+                  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.7));
+                }
+                .medal-vanilla {
+                  filter: drop-shadow(0 0 3px rgba(180, 83, 9, 0.7));
+                }
+                .medal-strawberry {
+                  filter: drop-shadow(0 0 3px rgba(244, 114, 182, 0.7));
+                }
+                button:hover .medal-gold {
+                  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
+                }
+                button:hover .medal-vanilla {
+                  filter: drop-shadow(0 0 5px rgba(180, 83, 9, 0.9));
+                }
+                button:hover .medal-strawberry {
+                  filter: drop-shadow(0 0 5px rgba(244, 114, 182, 0.9));
+                }
+              `}
+            </style>
+
+            <div ref={tabsRef} className="grid w-full grid-cols-3 mb-8 md:mb-12 bg-rum-black/50 border border-transparent rounded-md transition-all duration-300 relative">
+              {/* Sliding background indicator */}
+              <div 
+                className="absolute h-full rounded-md transition-all duration-300 ease-in-out z-0" 
+                style={{ 
+                  left: indicatorStyle.left, 
+                  width: indicatorStyle.width,
+                  background: indicatorStyle.background,
+                  bottom: 0
+                }}
+              ></div>
+              
+              <button 
+                onClick={() => handleTabChange('chocolate')}
+                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold ${activeTab === 'chocolate' ? 'text-[#FFF8E1]' : ''}`}
               >
-                <Medal className="h-5 w-5 mr-2 stroke-[#FFD700] fill-none" />
+                <span className="medal-icon inline-block">
+                  <Medal className="h-5 w-5 mr-2 stroke-[#FFD700] fill-none medal-gold" />
+                </span>
                 Chocolate Rum
-              </TabsTrigger>
-              <TabsTrigger 
-                value="vanilla"
-                className="data-[state=active]:bg-rum-black/90 data-[state=active]:text-rum-gold data-[state=active]:border-b-2 data-[state=active]:border-rum-gold text-white hover:text-rum-gold transition-colors text-sm md:text-base flex items-center justify-center"
+              </button>
+              <button 
+                onClick={() => handleTabChange('vanilla')}
+                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold ${activeTab === 'vanilla' ? 'text-amber-800' : ''}`}
               >
-                <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none" />
+                <span className="medal-icon inline-block">
+                  <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none medal-vanilla" />
+                </span>
                 Vanilla Rum
-              </TabsTrigger>
-              <TabsTrigger 
-                value="strawberry"
-                className="data-[state=active]:bg-rum-black/90 data-[state=active]:text-rum-gold data-[state=active]:border-b-2 data-[state=active]:border-rum-gold text-white hover:text-rum-gold transition-colors text-sm md:text-base flex items-center justify-center"
+              </button>
+              <button 
+                onClick={() => handleTabChange('strawberry')}
+                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold ${activeTab === 'strawberry' ? 'text-pink-600' : ''}`}
               >
-                <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none" />
+                <span className="medal-icon inline-block">
+                  <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none medal-strawberry" />
+                </span>
                 Strawberry Rum
-              </TabsTrigger>
-            </TabsList>
+              </button>
+            </div>
 
-            <TabsContent value="chocolate" className="mt-0">
-              {renderCocktailGrid(cocktailsByFlavor.chocolate, "chocolate")}
-            </TabsContent>
+            <div ref={contentRef} className="mt-0">
+              <div data-tab-content data-tab-value="chocolate" className={activeTab !== 'chocolate' ? 'hidden' : ''}>
+                {renderCocktailGrid(cocktailsByFlavor.chocolate, "chocolate")}
+              </div>
 
-            <TabsContent value="vanilla" className="mt-0">
-              {renderCocktailGrid(cocktailsByFlavor.vanilla, "vanilla")}
-            </TabsContent>
+              <div data-tab-content data-tab-value="vanilla" className={activeTab !== 'vanilla' ? 'hidden' : ''}>
+                {renderCocktailGrid(cocktailsByFlavor.vanilla, "vanilla")}
+              </div>
 
-            <TabsContent value="strawberry" className="mt-0">
-              {renderCocktailGrid(cocktailsByFlavor.strawberry, "strawberry")}
-            </TabsContent>
-          </Tabs>
+              <div data-tab-content data-tab-value="strawberry" className={activeTab !== 'strawberry' ? 'hidden' : ''}>
+                {renderCocktailGrid(cocktailsByFlavor.strawberry, "strawberry")}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

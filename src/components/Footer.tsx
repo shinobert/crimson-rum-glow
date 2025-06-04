@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  // Generate fixed positions for particles to prevent re-renders
+  const particles = useMemo(() => {
+    return Array.from({ length: 5 }).map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 3}s`,
+      duration: `${4 + Math.random() * 2}s`
+    }));
+  }, []);
+
   return (
     <footer className="bg-gradient-to-br from-rum-black to-rum-red-dark text-white py-20 relative overflow-hidden">
       {/* Background Effects */}
@@ -9,15 +20,15 @@ const Footer = () => {
         <div className="absolute top-0 left-1/2 w-96 h-96 bg-gradient-to-r from-rum-gold/10 to-transparent rounded-full blur-3xl"></div>
         
         {/* Golden particles */}
-        {[...Array(5)].map((_, i) => (
+        {particles.map((particle) => (
           <div
-            key={i}
+            key={particle.id}
             className="absolute w-2 h-2 bg-rum-gold rounded-full opacity-30 animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${4 + Math.random() * 2}s`,
+              left: particle.left,
+              top: particle.top,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration,
               boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
             }}
           ></div>
