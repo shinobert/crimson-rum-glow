@@ -48,7 +48,7 @@ const Heritage = () => {
               True To Our 
               <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block pb-3"> Heritage</span>
             </h2>
-            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20 mb-8">
+            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300 mb-8">
               <p className="text-lg text-white/90 mb-6 leading-relaxed">
                 Caribbean Rum meets a century's worth of New Orleans tradition. We perfected the flavors of our locally beloved Roman Chewing Taffy into smooth, sweet, award winning rums that will have you remembering the good ole days.
               </p>
@@ -62,7 +62,7 @@ const Heritage = () => {
                   key={index}
                   href={stat.link}
                   onClick={(e) => stat.isScrollLink ? handleScrollLink(e, stat.link) : undefined}
-                  className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-rum-gold/30 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3),0_8px_20px_rgba(0,0,0,0.6)] hover:bg-rum-gold/20 hover:scale-105 cursor-pointer"
+                  className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-transparent hover:border-rum-gold/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3),0_8px_20px_rgba(0,0,0,0.6)] hover:bg-rum-gold/20 hover:scale-105 cursor-pointer"
                 >
                   <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">{stat.value}</div>
                   <div className="text-white/80 text-sm">{stat.label}</div>
@@ -76,7 +76,7 @@ const Heritage = () => {
               <img 
                 src="/Images/chocolate-rum.jpg" 
                 alt="Roman Candy Chocolate Rum" 
-                className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-700 border border-rum-gold/30"
+                className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-700 border border-transparent hover:border-rum-gold/50 transition-all duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-rum-black/60 via-transparent to-rum-gold/20 rounded-2xl group-hover:from-rum-black/40 transition-all duration-500"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-rum-gold/0 to-rum-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

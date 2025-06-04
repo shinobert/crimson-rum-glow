@@ -262,7 +262,7 @@ const Collection = () => {
       bgGradient: "bg-gradient-to-br from-[#3B2106] via-[#6B4226] to-[#3B2106]",
       accentColor: "orange-600",
       textColor: "text-[#FFF8E1]",
-      cardColor: "bg-gradient-to-br from-[#3B2106] via-[#6B4226] to-[#3B2106]",
+      cardColor: "bg-gradient-to-r from-[#402717] to-[#5D3522]",
       cocktailTab: "chocolate"
     },
     {
@@ -273,7 +273,7 @@ const Collection = () => {
       bgGradient: "from-pink-100 via-rose-100 to-red-100",
       accentColor: "pink-600",
       textColor: "text-pink-900",
-      cardColor: "bg-gradient-to-br from-pink-400 via-rose-400 to-red-400",
+      cardColor: "bg-gradient-to-br from-pink-200 via-rose-300 to-pink-300",
       cocktailTab: "strawberry"
     },
   ];
@@ -376,7 +376,7 @@ const Collection = () => {
             className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-700"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-rum-black/80 via-rum-red/40 to-transparent flex items-center">
-            <div className="p-8 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-rum-gold/30">
+            <div className="p-8 text-white max-w-2xl backdrop-blur-sm bg-rum-black/20 rounded-2xl m-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
               <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond">Not Your Grandpa's Candy
               </h3>
               <p className="text-lg text-white/90 leading-relaxed mb-8">

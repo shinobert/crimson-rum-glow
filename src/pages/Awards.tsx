@@ -140,21 +140,6 @@ const Awards = () => {
             </p>
           </div>
 
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            <div className="md:col-span-2 lg:col-span-1 backdrop-blur-sm bg-rum-gold/10 rounded-2xl p-8 border border-rum-gold/30 text-center">
-              <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">50+</div>
-              <div className="text-white text-xl">International Awards</div>
-            </div>
-            <div className="backdrop-blur-sm bg-rum-gold/10 rounded-2xl p-8 border border-rum-gold/30 text-center">
-              <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">25</div>
-              <div className="text-white text-xl">Gold Medals</div>
-            </div>
-            <div className="backdrop-blur-sm bg-rum-gold/10 rounded-2xl p-8 border border-rum-gold/30 text-center">
-              <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-4">15</div>
-              <div className="text-white text-xl">Master Awards</div>
-            </div>
-          </div> */}
-
           <div className="space-y-6">
             {/* <h2 className="text-4xl font-bold text-center text-white mb-12 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
               Recent Recognition
@@ -162,7 +147,7 @@ const Awards = () => {
             {awards.map((award, index) => (
               <div 
                 key={`${award.year}-${award.title}`}
-                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20 hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
+                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">

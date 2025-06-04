@@ -58,10 +58,10 @@ const Heritage = () => {
               <img 
                 src="/Images/cart.jpg" 
                 alt="Traditional Roman Candy Cart"
-                className="rounded-2xl shadow-2xl border border-rum-gold/30 w-full h-full object-cover max-h-[500px]"
+                className="rounded-2xl shadow-2xl border border-transparent hover:border-rum-gold/50 transition-all duration-300 w-full h-full object-cover max-h-[500px]"
               />
             </div>
-            <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl py-4 px-8 border border-rum-gold/20">
+            <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl py-4 px-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
               <h2 className="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                 The Story Begins
               </h2>
@@ -82,7 +82,7 @@ const Heritage = () => {
               {milestones.map((milestone, index) => (
                 <div 
                   key={milestone.year}
-                  className="relative h-40 animate-fade-in-up backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20"
+                  className="relative h-40 animate-fade-in-up backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {/* Year number */}

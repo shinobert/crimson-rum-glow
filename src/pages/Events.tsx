@@ -72,7 +72,7 @@ const Events = () => {
             ))}
           </div>
 
-          <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-12 border border-rum-gold/20 text-center">
+          <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-12 border border-transparent hover:border-rum-gold/50 transition-all duration-300 text-center">
             <h2 className="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
               Private Events
             </h2>

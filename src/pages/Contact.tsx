@@ -59,7 +59,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20">
+    <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
       <h2 className="text-3xl font-bold text-white mb-8 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
         Send Us a Message
       </h2>
@@ -70,7 +70,7 @@ const ContactForm = () => {
             id="name"
             name="name"
             type="text" 
-            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
             value={formData.name}
             onChange={handleChange}
             required
@@ -82,7 +82,7 @@ const ContactForm = () => {
             id="email"
             name="email"
             type="email" 
-            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
             value={formData.email}
             onChange={handleChange}
             required
@@ -94,7 +94,7 @@ const ContactForm = () => {
             id="subject"
             name="subject"
             type="text" 
-            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
             value={formData.subject}
             onChange={handleChange}
             required
@@ -106,7 +106,7 @@ const ContactForm = () => {
             id="message"
             name="message"
             rows={5}
-            className="w-full bg-rum-black/50 border border-rum-gold/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors resize-none"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors resize-none"
             value={formData.message}
             onChange={handleChange}
             required
@@ -168,7 +168,7 @@ const Contact = () => {
             </div>
 
             <div className="animate-fade-in-right space-y-8">
-              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20">
+              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                   Visit Our Distillery
                 </h3>
@@ -186,7 +186,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-rum-gold/20">
+              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                   Business Hours
                 </h3>

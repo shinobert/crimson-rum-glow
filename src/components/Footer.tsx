@@ -109,7 +109,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="backdrop-blur-sm bg-rum-black/20 rounded-xl p-6 border border-rum-gold/20 mb-16 animate-fade-in-up">
+        <div className="backdrop-blur-sm bg-rum-black/20 rounded-xl p-6 border border-transparent hover:border-rum-gold/50 transition-all duration-300 mb-16 animate-fade-in-up">
           <div className="flex flex-col items-center justify-center">
             <p className="text-white/80 mb-4 leading-relaxed text-center max-w-3xl">
               Redefining tradition since 2014.

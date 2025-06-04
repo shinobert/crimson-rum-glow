@@ -91,7 +91,7 @@ const Cocktails = () => {
             Back to all {flavor} cocktails
           </button>
           
-          <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl overflow-hidden border border-rum-gold/20 hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up group flex flex-col md:flex-row">
+          <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl overflow-hidden border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up group flex flex-col md:flex-row">
             <div className="relative overflow-hidden md:w-2/5 lg:w-1/3">
               <img 
                 src={selectedCocktail.image}
@@ -133,7 +133,7 @@ const Cocktails = () => {
         {cocktails.map((cocktail, index) => (
           <div 
             key={cocktail.name}
-            className="backdrop-blur-sm bg-rum-black/30 rounded-2xl overflow-hidden border border-rum-gold/20 hover:border-rum-gold/40 transition-all duration-500 animate-fade-in-up group cursor-pointer"
+            className="backdrop-blur-sm bg-rum-black/30 rounded-2xl overflow-hidden border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up group cursor-pointer"
             style={{ animationDelay: `${index * 0.2}s` }}
             onClick={() => setExpandedCocktail(cocktail.name)}
           >
@@ -207,7 +207,7 @@ const Cocktails = () => {
             url.searchParams.set('tab', value);
             window.history.pushState({}, '', url);
           }}>
-            <TabsList className="grid w-full grid-cols-3 mb-8 md:mb-12 bg-rum-black/50 border border-rum-gold/20">
+            <TabsList className="grid w-full grid-cols-3 mb-8 md:mb-12 bg-rum-black/50 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
               <TabsTrigger 
                 value="chocolate" 
                 className="data-[state=active]:bg-rum-black/90 data-[state=active]:text-rum-gold data-[state=active]:border-b-2 data-[state=active]:border-rum-gold text-white hover:text-rum-gold transition-colors text-sm md:text-base flex items-center justify-center"

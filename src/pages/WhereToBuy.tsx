@@ -95,7 +95,7 @@ const WhereToBuy = () => {
                 {retailers.map((retailer, index) => (
                   <div 
                     key={retailer.name}
-                    className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 border border-rum-gold/20 hover:border-rum-gold/50 transition-all duration-500"
+                    className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 border border-transparent hover:border-rum-gold/50 transition-all duration-500"
                   >
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="text-xl font-bold text-white">{retailer.name}</h3>
@@ -116,7 +116,7 @@ const WhereToBuy = () => {
                 {regions.map((region, index) => (
                   <div 
                     key={region.region}
-                    className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 border border-rum-gold/20"
+                    className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 border border-transparent hover:border-rum-gold/50 transition-all duration-500"
                   >
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="text-xl font-bold text-white">{region.region}</h3>
@@ -130,7 +130,7 @@ const WhereToBuy = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20 text-center">
+            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300 text-center">
               <h3 className="text-3xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                 Online Store
               </h3>
@@ -143,7 +143,7 @@ const WhereToBuy = () => {
               </Button>
             </div>
 
-            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-rum-gold/20 text-center">
+            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300 text-center">
               <h3 className="text-3xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                 Become a Retailer
               </h3>
