@@ -309,7 +309,8 @@ const Cocktails = () => {
               
               <button 
                 onClick={() => handleTabChange('chocolate')}
-                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold ${activeTab === 'chocolate' ? 'text-[#FFF8E1]' : ''}`}
+                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
+                style={{ color: activeTab === 'chocolate' ? '#FFF8E1' : '' }}
               >
                 <span className="medal-icon inline-block">
                   <Medal className="h-5 w-5 mr-2 stroke-[#FFD700] fill-none medal-gold" />
@@ -318,7 +319,8 @@ const Cocktails = () => {
               </button>
               <button 
                 onClick={() => handleTabChange('vanilla')}
-                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold ${activeTab === 'vanilla' ? 'text-amber-800' : ''}`}
+                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
+                style={{ color: activeTab === 'vanilla' ? '#92400E' : '' }}
               >
                 <span className="medal-icon inline-block">
                   <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none medal-vanilla" />
@@ -327,7 +329,8 @@ const Cocktails = () => {
               </button>
               <button 
                 onClick={() => handleTabChange('strawberry')}
-                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold ${activeTab === 'strawberry' ? 'text-pink-600' : ''}`}
+                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
+                style={{ color: activeTab === 'strawberry' ? '#DB2777' : '' }}
               >
                 <span className="medal-icon inline-block">
                   <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none medal-strawberry" />
