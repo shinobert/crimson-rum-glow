@@ -9,7 +9,7 @@ const Events = () => {
       date: "August 2, 2025 - August 3, 2025",
       title: "LRA Showcase 2025",
       location: "New Orleans Morial Convention Center | New Orleans",
-      description: "Come get a sample of our delicious rum. and walk away with a bottle of your own!"
+      description: "Showcasing our product to restaurant, bar, & hospitality owners in the local industry."
     },
   ];
 
@@ -60,14 +60,6 @@ const Events = () => {
                   <p className="text-white/70 mb-2 sm:mb-4 text-sm sm:text-base">{event.location}</p>
                   <p className="text-white/90 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">{event.description}</p>
                 </div>
-                {/* <div className="flex justify-between items-center">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
-                    {event.price}
-                  </div>
-                  <Button className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold">
-                    Book Now
-                  </Button>
-                </div> */}
               </div>
             ))}
           </div>

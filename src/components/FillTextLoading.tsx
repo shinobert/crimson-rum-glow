@@ -7,28 +7,23 @@ interface FillTextLoadingProps {
   isActive?: boolean;
 }
 
-const FillTextLoading: React.FC<FillTextLoadingProps> = ({ text, className = "", isActive = false }) => {
+const FillTextLoading: React.FC<FillTextLoadingProps> = ({ 
+  text, 
+  className = "", 
+  isActive = false
+}) => {
   const controls = useAnimation();
-  const animationRef = useRef<NodeJS.Timeout | null>(null);
   
   useEffect(() => {
     const animateText = async () => {
       // Reset to starting position
       await controls.set({ clipPath: 'inset(0 100% 0 0)' });
       
-      // Animate to full width
+      // Animate to full width - 5 second duration
       await controls.start({
         clipPath: 'inset(0 0% 0 0)',
-        transition: { duration: 3, ease: "easeInOut" }
+        transition: { duration: 5, ease: "easeInOut" }
       });
-      
-      // Pause at full width
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
-      // Reset and repeat if still active
-      if (isActive) {
-        animationRef.current = setTimeout(animateText, 200);
-      }
     };
     
     // Only start animation when isActive is true
@@ -37,22 +32,7 @@ const FillTextLoading: React.FC<FillTextLoadingProps> = ({ text, className = "",
     } else {
       // Reset to starting position when not active
       controls.set({ clipPath: 'inset(0 100% 0 0)' });
-      
-      // Clear any pending animation
-      if (animationRef.current) {
-        clearTimeout(animationRef.current);
-        animationRef.current = null;
-      }
     }
-    
-    // Cleanup function to clear timeout when component unmounts or isActive changes
-    return () => {
-      if (animationRef.current) {
-        clearTimeout(animationRef.current);
-        animationRef.current = null;
-      }
-    };
-    
   }, [controls, isActive]);
   
   return (

@@ -22,13 +22,14 @@ const LoadingDots = () => {
 };
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const navigate = useNavigate();
-
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [targetPath, setTargetPath] = useState('');
+  
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -78,18 +79,21 @@ const Header = () => {
   };
 
   const handleNavigation = (path: string) => {
+    // Show the transition overlay
     setIsTransitioning(true);
+    setTargetPath(path);
     
-    // Wait longer before navigating to ensure the text fill animation completes at least once
+    // Simple approach: Wait for animation to complete (5s)
     setTimeout(() => {
       navigate(path);
       setIsMobileMenuOpen(false);
       
-      // Add additional delay before hiding the loading screen
+      // Give a little extra time after navigation before hiding the loading screen
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 2000);
-    }, 4000);
+        setTargetPath('');
+      }, 1000);
+    }, 5000); // Wait 5 seconds before navigating
   };
 
   const navLinks = [
@@ -114,7 +118,6 @@ const Header = () => {
               alt="Roman Candy Rum Logo" 
               className="h-20 w-auto"
             />
-            {/* <span className="text-white text-2xl font-bold bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent font-eb-garamond uppercase">ROMAN CANDY RUM</span> */}
           </Link>
 
           {/* Hamburger Menu Button - Always Visible */}
@@ -191,7 +194,7 @@ const Header = () => {
 
       {/* Loading Transition Overlay */}
       <div className={`fixed inset-0 z-50 transition-all duration-800 ease-in-out ${
-        isTransitioning ? 'opacity-100 visible' : 'opacity-0 invisible'
+        isTransitioning ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
       }`}>
         <div className="absolute inset-0 bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black flex items-center justify-center">
           {/* Golden particles background */}
@@ -222,7 +225,11 @@ const Header = () => {
               />
               <div className="flex justify-center mt-8">
                 <h2 className="text-6xl md:text-7xl lg:text-8xl eb-garamond-800 flex items-center uppercase">
-                  <FillTextLoading text="Roman Candy Rum" className="eb-garamond-800" isActive={isTransitioning} />
+                  <FillTextLoading 
+                    text="Roman Candy Rum" 
+                    className="eb-garamond-800" 
+                    isActive={isTransitioning}
+                  />
                 </h2>
               </div>
             </div>

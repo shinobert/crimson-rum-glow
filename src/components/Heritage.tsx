@@ -56,7 +56,7 @@ const Heritage = () => {
                 Whether it's Vanilla, Chocolate, or Strawberry - you'll find we are committed to keeping our New Orleans identity as we made the rum taste just like the taffy...but for grown ups!
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-5">
               {stats.map((stat, index) => (
                 <a 
                   key={index}
