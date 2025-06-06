@@ -63,13 +63,13 @@ const Heritage = () => {
             </div>
             <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl py-8 sm:py-12 px-6 sm:px-10 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
-                The Story Begins
+                How Tradition Began
               </h2>
               <p className="text-base sm:text-lg text-white/90 mb-4 sm:mb-6 leading-relaxed">
-                In 1899, the son of Italian immigrants, Sam Cortese, was riding the back of a wagon where he accidentally fell off in front of an incoming street car that resulted in having both of his legs severed off at the young age of 10.
+                In 1899, the son of Italian immigrants, Salvador "Sam" Cortese, was hanging off the back of a wagon where he jumped off and accidentally fell in front of an incoming street car that resulted in having both of his legs severed at the young age of 10.
               </p>
               <p className="text-base sm:text-lg text-white/90 leading-relaxed">
-                Through perseverance, adversity, and tenacity, Sam found a way to survive and be successful by building the iconic Roman Chewing Candy wagon and selling salt water taffy out of it. His story inspires us as we continue to build upon his legacy.
+                Yet through perseverance, adversity, and tenacity: Sam found a way to survive and be successful by building the iconic Roman Chewing Candy wagon and selling taffy out of it. His story inspires us as we continue to build upon his legacy.
               </p>
             </div>
           </div>

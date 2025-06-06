@@ -45,15 +45,16 @@ const Heritage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="animate-fade-in-left">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-10 font-eb-garamond text-center sm:text-left">
-                How Tradition 
-              <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block pb-3"> Began</span>
+              True To Our 
+              <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block pb-3"> Heritage</span>
             </h2>
             <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-6 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300 mb-6 sm:mb-8">
               <p className="text-base sm:text-lg text-white/90 mb-4 sm:mb-6 leading-relaxed">
-                In 1899, the son of Italian immigrants, Salvador "Sam" Cortese, was hanging off the back of a wagon where he jumped off and accidentally fell in front of an incoming street car that resulted in having both of his legs severed at the young age of 10.
+                Caribbean Rum meets a century's worth of New Orleans tradition. We perfected the flavors of our locally beloved Roman Chewing Taffy into smooth, sweet, award winning rums that will have you remembering the good ole days.
               </p>
               <p className="text-base sm:text-lg text-white/90 leading-relaxed">
-                Yet through perseverance, adversity, and tenacity: Sam found a way to survive and be successful by building the iconic Roman Chewing Candy wagon and selling taffy out of it. His story inspires us as we continue to build upon his legacy.              </p>
+                Whether it's Vanilla, Chocolate, or Strawberry - you'll find we are committed to keeping our New Orleans identity as we made the rum taste just like the taffy...but for grown ups!
+              </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {stats.map((stat, index) => (
