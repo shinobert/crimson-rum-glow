@@ -59,67 +59,67 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
-      <h2 className="text-3xl font-bold text-white mb-8 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+    <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
+      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
         Send Us a Message
       </h2>
-      <form className="space-y-6" onSubmit={handleSubmit}>
+      <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
         <div>
-          <label className="block text-white/80 mb-2" htmlFor="name">Name</label>
+          <label className="block text-white/80 mb-1 sm:mb-2 text-sm sm:text-base" htmlFor="name">Name</label>
           <input 
             id="name"
             name="name"
             type="text" 
-            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:border-rum-gold transition-colors text-sm sm:text-base"
             value={formData.name}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label className="block text-white/80 mb-2" htmlFor="email">Email</label>
+          <label className="block text-white/80 mb-1 sm:mb-2 text-sm sm:text-base" htmlFor="email">Email</label>
           <input 
             id="email"
             name="email"
             type="email" 
-            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:border-rum-gold transition-colors text-sm sm:text-base"
             value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label className="block text-white/80 mb-2" htmlFor="subject">Subject</label>
+          <label className="block text-white/80 mb-1 sm:mb-2 text-sm sm:text-base" htmlFor="subject">Subject</label>
           <input 
             id="subject"
             name="subject"
             type="text" 
-            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:border-rum-gold transition-colors text-sm sm:text-base"
             value={formData.subject}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label className="block text-white/80 mb-2" htmlFor="message">Message</label>
+          <label className="block text-white/80 mb-1 sm:mb-2 text-sm sm:text-base" htmlFor="message">Message</label>
           <textarea 
             id="message"
             name="message"
             rows={5}
-            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-rum-gold transition-colors resize-none"
+            className="w-full bg-rum-black/50 border border-transparent hover:border-rum-gold/50 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:outline-none focus:border-rum-gold transition-colors resize-none text-sm sm:text-base"
             value={formData.message}
             onChange={handleChange}
             required
           ></textarea>
         </div>
         {submitStatus.message && (
-          <div className={`p-3 rounded-lg ${submitStatus.success ? 'bg-green-500/20 text-green-200' : 'bg-red-500/20 text-red-200'}`}>
+          <div className={`p-2 sm:p-3 rounded-lg ${submitStatus.success ? 'bg-green-500/20 text-green-200' : 'bg-red-500/20 text-red-200'} text-sm sm:text-base`}>
             {submitStatus.message}
           </div>
         )}
         <Button 
           type="submit"
-          className="w-full bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold py-4"
+          className="w-full bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold py-3 sm:py-4 text-sm sm:text-base"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -153,26 +153,26 @@ const Contact = () => {
       
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20 animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
+          <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-in-up">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 md:mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
               Get In <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Touch</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
               We'd love to hear from you. Reach out for inquiries, partnerships, or just to share your rum stories.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-20">
             <div className="animate-fade-in-left">
               <ContactForm />
             </div>
 
-            <div className="animate-fade-in-right space-y-8">
-              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+            <div className="animate-fade-in-right space-y-6 sm:space-y-8">
+              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                   Visit Our Distillery
                 </h3>
-                <div className="space-y-4 text-white/80">
+                <div className="space-y-3 sm:space-y-4 text-white/80 text-sm sm:text-base">
                   <p><strong className="text-rum-gold">Address:</strong><br />
                   Caribbean Premium Rum Distillery<br />
                   123 Rum Heritage Road<br />
@@ -186,11 +186,11 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                   Business Hours
                 </h3>
-                <div className="space-y-3 text-white/80">
+                <div className="space-y-2 sm:space-y-3 text-white/80 text-sm sm:text-base">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
                     <span>9:00 AM - 6:00 PM</span>

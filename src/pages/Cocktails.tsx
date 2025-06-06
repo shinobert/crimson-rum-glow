@@ -120,9 +120,9 @@ const Cocktails = () => {
         <div className="space-y-4">
           <button 
             onClick={() => setExpandedCocktail(null)}
-            className="mb-6 flex items-center text-rum-gold hover:text-rum-gold-light transition-colors"
+            className="mb-4 sm:mb-6 flex items-center text-rum-gold hover:text-rum-gold-light transition-colors"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to all {flavor} cocktails
@@ -133,26 +133,26 @@ const Cocktails = () => {
               <img 
                 src={selectedCocktail.image}
                 alt={selectedCocktail.name}
-                className="w-full h-64 md:h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-48 sm:h-64 md:h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-rum-black/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-6 text-rum-gold font-semibold text-sm md:text-base">
+              <div className="absolute bottom-4 left-4 sm:left-6 text-rum-gold font-semibold text-xs sm:text-sm md:text-base">
                 Featured: {selectedCocktail.rum}
               </div>
             </div>
             
-            <div className="p-6 md:p-8 flex-1">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+            <div className="p-4 sm:p-6 md:p-8 flex-1">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                 {selectedCocktail.name}
               </h3>
-              <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">{selectedCocktail.description}</p>
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-8 leading-relaxed">{selectedCocktail.description}</p>
               
               <div>
-                <h4 className="text-rum-gold font-semibold text-xl md:text-2xl mb-4">Ingredients:</h4>
-                <ul className="space-y-3">
+                <h4 className="text-rum-gold font-semibold text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4">Ingredients:</h4>
+                <ul className="space-y-2 sm:space-y-3">
                   {selectedCocktail.ingredients.map((ingredient, idx) => (
-                    <li key={idx} className="text-white/70 flex items-center text-base md:text-lg">
-                      <span className="w-3 h-3 bg-rum-gold rounded-full mr-3 flex-shrink-0"></span>
+                    <li key={idx} className="text-white/70 flex items-center text-sm sm:text-base md:text-lg">
+                      <span className="w-2 h-2 sm:w-3 sm:h-3 bg-rum-gold rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
                       {ingredient}
                     </li>
                   ))}
@@ -166,7 +166,7 @@ const Cocktails = () => {
     
     // Otherwise, show the grid of cocktails
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {cocktails.map((cocktail, index) => (
           <div 
             key={cocktail.name}
@@ -174,7 +174,7 @@ const Cocktails = () => {
             style={{ animationDelay: `${index * 0.2}s` }}
             onClick={() => setExpandedCocktail(cocktail.name)}
           >
-            <div className="relative overflow-hidden h-48 md:h-56">
+            <div className="relative overflow-hidden h-40 sm:h-48 md:h-56">
               <img 
                 src={cocktail.image}
                 alt={cocktail.name}
@@ -183,15 +183,15 @@ const Cocktails = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-rum-black/90 via-rum-black/30 to-transparent"></div>
             </div>
             
-            <div className="p-4 md:p-5">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-2 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+            <div className="p-3 sm:p-4 md:p-5">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                 {cocktail.name}
               </h3>
               <div className="flex items-center justify-between">
-                <p className="text-rum-gold text-sm">{cocktail.rum}</p>
-                <div className="text-white/80 flex items-center text-sm">
+                <p className="text-rum-gold text-xs sm:text-sm">{cocktail.rum}</p>
+                <div className="text-white/80 flex items-center text-xs sm:text-sm">
                   <span>View Recipe</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -251,11 +251,11 @@ const Cocktails = () => {
       
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12 md:mb-20 animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 md:mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
+          <div className="text-center mb-8 sm:mb-12 md:mb-20 animate-fade-in-up">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 md:mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
               Signature <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Cocktails</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
               Expertly crafted cocktails that showcase the versatility of our award winning rums, as well as pay homage to our roots
             </p>
           </div>
@@ -309,31 +309,31 @@ const Cocktails = () => {
               
               <button 
                 onClick={() => handleTabChange('chocolate')}
-                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
+                className={`py-2 px-3 sm:px-4 text-white text-xs sm:text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
                 style={{ color: activeTab === 'chocolate' ? '#FFF8E1' : '' }}
               >
                 <span className="medal-icon inline-block">
-                  <Medal className="h-5 w-5 mr-2 stroke-[#FFD700] fill-none medal-gold" />
+                  <Medal className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 stroke-[#FFD700] fill-none medal-gold" />
                 </span>
                 Chocolate Rum
               </button>
               <button 
                 onClick={() => handleTabChange('vanilla')}
-                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
+                className={`py-2 px-3 sm:px-4 text-white text-xs sm:text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
                 style={{ color: activeTab === 'vanilla' ? '#92400E' : '' }}
               >
                 <span className="medal-icon inline-block">
-                  <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none medal-vanilla" />
+                  <Medal className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 stroke-[#C0C0C0] fill-none medal-vanilla" />
                 </span>
                 Vanilla Rum
               </button>
               <button 
                 onClick={() => handleTabChange('strawberry')}
-                className={`py-2 px-4 text-white text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
+                className={`py-2 px-3 sm:px-4 text-white text-xs sm:text-sm md:text-base flex items-center justify-center relative z-10 font-bold`}
                 style={{ color: activeTab === 'strawberry' ? '#DB2777' : '' }}
               >
                 <span className="medal-icon inline-block">
-                  <Medal className="h-5 w-5 mr-2 stroke-[#C0C0C0] fill-none medal-strawberry" />
+                  <Medal className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 stroke-[#C0C0C0] fill-none medal-strawberry" />
                 </span>
                 Strawberry Rum
               </button>

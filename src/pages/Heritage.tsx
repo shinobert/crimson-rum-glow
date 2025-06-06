@@ -44,59 +44,71 @@ const Heritage = () => {
       
       <div className="pt-32 pb-20 relative z-10">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20 animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
+          <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-in-up">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 md:mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
               Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Heritage</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
               A legacy spanning over 100 years, rooted in tradition, driven by excellence
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-20 items-center mb-12 sm:mb-16 md:mb-20">
             <div className="animate-fade-in-left">
               <img 
-                src="/Images/cart.jpg" 
+                src="/Images/old cart.jpg" 
                 alt="Traditional Roman Candy Cart"
                 className="rounded-2xl shadow-2xl border border-transparent hover:border-rum-gold/50 transition-all duration-300 w-full h-full object-cover max-h-[500px]"
               />
             </div>
-            <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl py-4 px-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
-              <h2 className="text-4xl font-bold text-white mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+            <div className="animate-fade-in-right backdrop-blur-sm bg-rum-black/30 rounded-2xl py-8 sm:py-12 px-6 sm:px-10 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
                 The Story Begins
               </h2>
-              <p className="text-lg text-white/90 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/90 mb-4 sm:mb-6 leading-relaxed">
                 In 1899, the son of Italian immigrants, Sam Cortese, was riding the back of a wagon where he accidentally fell off in front of an incoming street car that resulted in having both of his legs severed off at the young age of 10.
               </p>
-              <p className="text-lg text-white/90 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/90 leading-relaxed">
                 Through perseverance, adversity, and tenacity, Sam found a way to survive and be successful by building the iconic Roman Chewing Candy wagon and selling salt water taffy out of it. His story inspires us as we continue to build upon his legacy.
               </p>
             </div>
           </div>
 
-          <div className="mb-20">
-            <h2 className="text-5xl font-bold text-center text-white mb-16 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+          <div className="mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-8 sm:mb-12 md:mb-16 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
               Timeline of Excellence
             </h2>
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {milestones.map((milestone, index) => (
                 <div 
                   key={milestone.year}
-                  className="relative h-40 animate-fade-in-up backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300"
+                  className="relative h-auto min-h-[10rem] sm:h-40 animate-fade-in-up backdrop-blur-sm bg-rum-black/30 rounded-2xl p-4 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  {/* Year number */}
-                  <div className={`absolute ${index % 2 === 0 ? 'left-8' : 'right-8'} top-1/2 transform -translate-y-1/2`}>
-                    <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
+                  {/* Mobile layout (stacked) */}
+                  <div className="sm:hidden flex flex-col items-center text-center">
+                    <div className="mb-3 text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
                       {milestone.year}
                     </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{milestone.title}</h3>
+                    <p className="text-white/80 text-sm">{milestone.description}</p>
                   </div>
                   
-                  {/* Centered content */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="text-center">
-                      <h3 className="text-2xl font-bold text-white mb-2">{milestone.title}</h3>
-                      <p className="text-white/80">{milestone.description}</p>
+                  {/* Desktop layout (side-by-side) */}
+                  <div className="hidden sm:block">
+                    {/* Year number */}
+                    <div className={`absolute ${index % 2 === 0 ? 'left-8' : 'right-8'} top-1/2 transform -translate-y-1/2`}>
+                      <div className="text-6xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
+                        {milestone.year}
+                      </div>
+                    </div>
+                    
+                    {/* Centered content */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <div className="text-center">
+                        <h3 className="text-2xl font-bold text-white mb-2">{milestone.title}</h3>
+                        <p className="text-white/80 text-base">{milestone.description}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

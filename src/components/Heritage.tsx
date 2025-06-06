@@ -44,28 +44,28 @@ const Heritage = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="animate-fade-in-left">
-            <h2 className="text-6xl md:text-7xl font-bold text-white mb-10 font-eb-garamond">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-10 font-eb-garamond text-center sm:text-left">
               True To Our 
               <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent block pb-3"> Heritage</span>
             </h2>
-            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300 mb-8">
-              <p className="text-lg text-white/90 mb-6 leading-relaxed">
+            <div className="backdrop-blur-sm bg-rum-black/20 rounded-2xl p-6 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300 mb-6 sm:mb-8">
+              <p className="text-base sm:text-lg text-white/90 mb-4 sm:mb-6 leading-relaxed">
                 Caribbean Rum meets a century's worth of New Orleans tradition. We perfected the flavors of our locally beloved Roman Chewing Taffy into smooth, sweet, award winning rums that will have you remembering the good ole days.
               </p>
-              <p className="text-lg text-white/90 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/90 leading-relaxed">
                 Whether it's Vanilla, Chocolate, or Strawberry - you'll find we are committed to keeping our New Orleans identity as we made the rum taste just like the taffy...but for grown ups!
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <a 
                   key={index}
                   href={stat.link}
                   onClick={(e) => stat.isScrollLink ? handleScrollLink(e, stat.link) : undefined}
-                  className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-6 border border-transparent hover:border-rum-gold/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3),0_8px_20px_rgba(0,0,0,0.6)] hover:bg-rum-gold/20 hover:scale-105 cursor-pointer"
+                  className="text-center backdrop-blur-sm bg-rum-gold/10 rounded-xl p-4 sm:p-6 border border-transparent hover:border-rum-gold/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3),0_8px_20px_rgba(0,0,0,0.6)] hover:bg-rum-gold/20 hover:scale-105 cursor-pointer"
                 >
-                  <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-2">{stat.value}</div>
-                  <div className="text-white/80 text-sm">{stat.label}</div>
+                  <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent mb-1 sm:mb-2">{stat.value}</div>
+                  <div className="text-white/80 text-xs sm:text-sm">{stat.label}</div>
                 </a>
               ))}
             </div>

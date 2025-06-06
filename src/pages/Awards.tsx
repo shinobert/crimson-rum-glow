@@ -131,53 +131,46 @@ const Awards = () => {
       
       <div className="pt-32 pb-20 relative z-10">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20 animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
+          <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-in-up">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 md:mb-8 text-white uppercase tracking-wider font-eb-garamond" style={{ fontWeight: 800 }}>
               Our <span className="bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">Awards</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
               Recognition of excellence from the world's most prestigious spirits competitions
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* <h2 className="text-4xl font-bold text-center text-white mb-12 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
               Recent Recognition
             </h2> */}
             {awards.map((award, index) => (
               <div 
                 key={`${award.year}-${award.title}`}
-                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
+                className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-4 sm:p-6 md:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 items-center">
+                  <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-rum-gold to-rum-gold-light bg-clip-text text-transparent">
                     {award.year}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">{award.title}</h3>
-                    <p className="text-white/70">{award.organization}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">{award.title}</h3>
+                    <p className="text-white/70 text-sm sm:text-base">{award.organization}</p>
                   </div>
                   <div>
-                    <p className="text-white font-medium">{award.product}</p>
+                    <p className="text-white font-medium text-sm sm:text-base">{award.product}</p>
                   </div>
-                  <div className="text-right flex items-center justify-end">
+                  <div className="text-right flex items-center justify-end md:justify-end mt-2 md:mt-0">
                     {getMedalImage(award.medal, award.title) && (
-                      <div className="mr-2 relative w-24 h-24">
+                      <div className="mr-2 relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
                         <img 
                           src={getMedalImage(award.medal, award.title)} 
                           alt={`${award.medal} Medal`}
-                          className="object-contain w-24 h-24"
+                          className="object-contain w-full h-full"
                         />
                       </div>
                     )}
-                    {/* <span className={`px-4 py-2 rounded-full font-bold ${
-                      award.medal.toLowerCase() === 'silver' 
-                        ? 'bg-gradient-to-r from-gray-300 to-gray-100 text-gray-800'
-                        : 'bg-gradient-to-r from-rum-gold to-rum-gold-light text-rum-black'
-                    }`}>
-                      {award.medal}
-                    </span> */}
                   </div>
                 </div>
               </div>

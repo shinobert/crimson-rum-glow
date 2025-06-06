@@ -41,12 +41,12 @@ const Footer = () => {
             <img 
               src="/Images/Logo.png" 
               alt="Roman Candy Rum Logo" 
-              className="h-24 w-auto"
+              className="h-28 w-auto"
             />
           </div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <ul className="space-y-3 text-white/80">
+          <div className="animate-fade-in-up text-center md:text-left" style={{ animationDelay: '0.2s' }}>
+            <ul className="space-y-3 text-white/80 flex flex-col items-center md:items-start">
               <li>
                 <Link to="/heritage" className="hover:text-rum-gold transition-colors duration-300 relative group">
                   Heritage
@@ -68,8 +68,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <ul className="space-y-3 text-white/80">
+          <div className="animate-fade-in-up text-center md:text-left" style={{ animationDelay: '0.4s' }}>
+            <ul className="space-y-3 text-white/80 flex flex-col items-center md:items-start">
               <li>
                 <Link to="/cocktails" className="hover:text-rum-gold transition-colors duration-300 relative group">
                   Cocktails
@@ -91,8 +91,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="animate-fade-in-right">
-            <div className="flex items-center space-x-6 mb-6">
+          <div className="animate-fade-in-right text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start space-x-6 mb-6">
               <a href="https://www.facebook.com/RomanCandyRum" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-rum-gold transition-colors duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="w-6 h-6 fill-current">
                   <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />

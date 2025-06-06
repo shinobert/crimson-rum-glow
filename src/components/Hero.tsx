@@ -38,26 +38,31 @@ const Hero = () => {
 
       {/* Main Content */}
       <div className="relative z-20 text-center text-white px-6 max-w-6xl">
-        <div className="animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 text-white uppercase tracking-normal animate-fade-in-up font-eb-garamond" style={{ textShadow: '-2px 1px 0 #FFD700, -4px 3px 0 #8B0000', fontWeight: 800, transform: 'scaleY(1.2)' }}>
+        <div>
+          <h1 
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 text-white uppercase tracking-normal title-animate font-eb-garamond" 
+            style={{ textShadow: '-2px 1px 0 #FFD700, -4px 3px 0 #8B0000', fontWeight: 800 }}
+          >
             ROMAN CANDY RUM
           </h1>
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-light mb-10 text-white uppercase tracking-widest animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-6 sm:mb-10 text-white uppercase tracking-widest subtitle-animate">
             A New Orleans Tradition, All Grown Up!
           </h3>
         </div>
       </div>
 
       {/* Enhanced Scroll Indicator - Now Clickable */}
-      <button 
-        onClick={scrollToNextSection}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce cursor-pointer hover:opacity-80 transition-opacity focus:outline-none"
-        aria-label="Scroll to next section"
-      >
-        <div className="w-10 h-14 border-2 border-rum-gold rounded-full flex justify-center backdrop-blur-sm bg-rum-black/20 shadow-lg hover:bg-rum-black/40 transition-all duration-300">
-          <div className="w-1.5 h-4 bg-gradient-to-b from-rum-gold to-rum-gold-dark rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </button>
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center pb-8 z-20">
+        <button 
+          onClick={scrollToNextSection}
+          className="animate-bounce cursor-pointer hover:opacity-80 transition-opacity focus:outline-none mx-auto"
+          aria-label="Scroll to next section"
+        >
+          <div className="w-10 h-14 border-2 border-rum-gold rounded-full flex items-center justify-center backdrop-blur-sm bg-rum-black/20 shadow-lg hover:bg-rum-black/40 transition-all duration-300">
+            <div className="w-1.5 h-4 bg-gradient-to-b from-rum-gold to-rum-gold-dark rounded-full animate-pulse" style={{ transform: 'translateY(-30%)' }}></div>
+          </div>
+        </button>
+      </div>
     </section>
   );
 };

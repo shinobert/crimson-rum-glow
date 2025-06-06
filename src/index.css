@@ -11,6 +11,48 @@
   font-style: normal;
 }
 
+/* Extended title class - ensures the title is vertically extended from the start */
+.extended-title {
+  transform: scaleY(1.2) !important;
+  will-change: opacity;
+  transform-origin: center;
+}
+
+/* Custom title animation that keeps the vertical scaling */
+@keyframes title-animate {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scaleY(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1.2);
+  }
+}
+
+.title-animate {
+  animation: title-animate 0.8s ease-out forwards;
+  transform: scaleY(1.2);
+  transform-origin: center;
+}
+
+/* Custom subtitle animation with delay */
+@keyframes subtitle-animate {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle-animate {
+  animation: subtitle-animate 0.8s ease-out 0.3s forwards;
+  opacity: 0; /* Start with opacity 0 to prevent flicker */
+}
+
 .eb-garamond-400 {
   font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
