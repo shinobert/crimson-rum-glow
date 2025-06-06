@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, Settings } from 'lucide-react';
+import FillTextLoading from './FillTextLoading';
 
 // Self-contained loading dots component
 const LoadingDots = () => {
@@ -79,11 +80,16 @@ const Header = () => {
   const handleNavigation = (path: string) => {
     setIsTransitioning(true);
     
+    // Wait longer before navigating to ensure the text fill animation completes at least once
     setTimeout(() => {
       navigate(path);
       setIsMobileMenuOpen(false);
-      setIsTransitioning(false);
-    }, 1200);
+      
+      // Add additional delay before hiding the loading screen
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 2000);
+    }, 4000);
   };
 
   const navLinks = [
@@ -215,8 +221,8 @@ const Header = () => {
                 style={{ animationDuration: '8s' }}
               />
               <div className="flex justify-center mt-8">
-                <h2 className="text-4xl eb-garamond-800 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] flex items-center uppercase">
-                  Loading<LoadingDots />
+                <h2 className="text-6xl md:text-7xl lg:text-8xl eb-garamond-800 flex items-center uppercase">
+                  <FillTextLoading text="Roman Candy Rum" className="eb-garamond-800" isActive={isTransitioning} />
                 </h2>
               </div>
             </div>

@@ -3,12 +3,25 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Medal } from 'lucide-react';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+
+// Define type for cocktail object
+interface Cocktail {
+  name: string;
+  rum: string;
+  ingredients: string[];
+  description: string;
+  image: string;
+  activeTabName?: string;
+}
 
 const Cocktails = () => {
   const [expandedCocktail, setExpandedCocktail] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('chocolate');
   const contentRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
+  const [selectedCocktailDetails, setSelectedCocktailDetails] = useState<Cocktail | null>(null);
+  const [cardPosition, setCardPosition] = useState({ top: 0, left: 0, width: 0, height: 0 });
   const [indicatorStyle, setIndicatorStyle] = useState({ 
     left: '0%', 
     width: '33.333%',
@@ -107,97 +120,80 @@ const Cocktails = () => {
     ]
   };
 
-  const renderCocktailGrid = (cocktails: typeof cocktailsByFlavor.chocolate, flavor: string) => {
-    // If there's an expanded cocktail, show only that one
-    if (expandedCocktail) {
-      const selectedCocktail = cocktails.find(c => c.name === expandedCocktail);
-      
-      if (!selectedCocktail) {
-        return null; // This shouldn't happen, but just in case
-      }
-      
-      return (
-        <div className="space-y-4">
-          <button 
-            onClick={() => setExpandedCocktail(null)}
-            className="mb-4 sm:mb-6 flex items-center text-rum-gold hover:text-rum-gold-light transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to all {flavor} cocktails
-          </button>
-          
-          <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl overflow-hidden border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up group flex flex-col md:flex-row">
-            <div className="relative overflow-hidden md:w-2/5 lg:w-1/3">
-              <img 
-                src={selectedCocktail.image}
-                alt={selectedCocktail.name}
-                className="w-full h-48 sm:h-64 md:h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-rum-black/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 sm:left-6 text-rum-gold font-semibold text-xs sm:text-sm md:text-base">
-                Featured: {selectedCocktail.rum}
-              </div>
-            </div>
-            
-            <div className="p-4 sm:p-6 md:p-8 flex-1">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
-                {selectedCocktail.name}
-              </h3>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-8 leading-relaxed">{selectedCocktail.description}</p>
-              
-              <div>
-                <h4 className="text-rum-gold font-semibold text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4">Ingredients:</h4>
-                <ul className="space-y-2 sm:space-y-3">
-                  {selectedCocktail.ingredients.map((ingredient, idx) => (
-                    <li key={idx} className="text-white/70 flex items-center text-sm sm:text-base md:text-lg">
-                      <span className="w-2 h-2 sm:w-3 sm:h-3 bg-rum-gold rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
-                      {ingredient}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
+  const handleOpenCocktail = (cocktail: Cocktail, event: React.MouseEvent) => {
+    // Get the position and dimensions of the clicked card
+    const card = event.currentTarget as HTMLElement;
+    const rect = card.getBoundingClientRect();
     
-    // Otherwise, show the grid of cocktails
+    // Store the exact position and dimensions of the clicked card
+    setCardPosition({
+      top: rect.top,
+      left: rect.left,
+      width: rect.width,
+      height: rect.height
+    });
+    
+    // Store which tab we're in along with the cocktail details
+    setSelectedCocktailDetails({
+      ...cocktail,
+      activeTabName: activeTab
+    });
+    
+    setExpandedCocktail(cocktail.name);
+    
+    // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleCloseCocktail = () => {
+    setExpandedCocktail(null);
+    setSelectedCocktailDetails(null);
+    
+    // Re-enable scrolling
+    document.body.style.overflow = '';
+  };
+
+  const renderCocktailGrid = (cocktails: typeof cocktailsByFlavor.chocolate, flavor: string) => {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {cocktails.map((cocktail, index) => (
-          <div 
-            key={cocktail.name}
-            className="backdrop-blur-sm bg-rum-black/30 rounded-2xl overflow-hidden border border-transparent hover:border-rum-gold/50 transition-all duration-500 animate-fade-in-up group cursor-pointer"
+          <motion.div 
+            key={`${flavor}-${cocktail.name}`}
+            className="backdrop-blur-sm bg-rum-black/30 rounded-2xl overflow-hidden border border-transparent hover:border-rum-gold/50 transition-all duration-500 group cursor-pointer h-64 sm:h-80 relative"
             style={{ animationDelay: `${index * 0.2}s` }}
-            onClick={() => setExpandedCocktail(cocktail.name)}
+            onClick={(e) => handleOpenCocktail(cocktail, e)}
+            initial={{ opacity: 0, y: 20, borderRadius: '1rem' }}
+            animate={{ opacity: 1, y: 0, borderRadius: '1rem' }}
+            transition={{ 
+              duration: 0.5, 
+              delay: index * 0.1,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+            layout
+            layoutId={`card-container-${flavor}-${cocktail.name}`}
           >
-            <div className="relative overflow-hidden h-40 sm:h-48 md:h-56">
-              <img 
+            <motion.div 
+              className="absolute inset-0 w-full h-full"
+              layoutId={`card-image-container-${flavor}-${cocktail.name}`}
+            >
+              <motion.img 
                 src={cocktail.image}
                 alt={cocktail.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                layoutId={`card-image-${flavor}-${cocktail.name}`}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-rum-black/90 via-rum-black/30 to-transparent"></div>
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-rum-black via-rum-black/60 to-transparent"></div>
+            </motion.div>
             
-            <div className="p-3 sm:p-4 md:p-5">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+              <motion.h3 
+                className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent"
+                layoutId={`card-title-${flavor}-${cocktail.name}`}
+              >
                 {cocktail.name}
-              </h3>
-              <div className="flex items-center justify-between">
-                <p className="text-rum-gold text-xs sm:text-sm">{cocktail.rum}</p>
-                <div className="text-white/80 flex items-center text-xs sm:text-sm">
-                  <span>View Recipe</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
+              </motion.h3>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     );
@@ -209,6 +205,7 @@ const Cocktails = () => {
     
     setActiveTab(value);
     setExpandedCocktail(null);
+    setSelectedCocktailDetails(null);
     
     // Update URL without page reload
     const url = new URL(window.location.href);
@@ -230,6 +227,21 @@ const Cocktails = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rum-black via-rum-red-dark to-rum-black relative overflow-hidden">
+      {/* Add CSS for perspective */}
+      <style>
+        {`
+          .perspective-1000 {
+            perspective: 1500px;
+            transform-style: preserve-3d;
+          }
+          
+          .modal-content {
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+          }
+        `}
+      </style>
+      
       {/* Background particles */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((particle) => (
@@ -340,17 +352,183 @@ const Cocktails = () => {
             </div>
 
             <div ref={contentRef} className="mt-0">
-              <div data-tab-content data-tab-value="chocolate" className={activeTab !== 'chocolate' ? 'hidden' : ''}>
-                {renderCocktailGrid(cocktailsByFlavor.chocolate, "chocolate")}
-              </div>
+              <LayoutGroup>
+                <div data-tab-content data-tab-value="chocolate" className={activeTab !== 'chocolate' ? 'hidden' : ''}>
+                  {renderCocktailGrid(cocktailsByFlavor.chocolate, "chocolate")}
+                </div>
 
-              <div data-tab-content data-tab-value="vanilla" className={activeTab !== 'vanilla' ? 'hidden' : ''}>
-                {renderCocktailGrid(cocktailsByFlavor.vanilla, "vanilla")}
-              </div>
+                <div data-tab-content data-tab-value="vanilla" className={activeTab !== 'vanilla' ? 'hidden' : ''}>
+                  {renderCocktailGrid(cocktailsByFlavor.vanilla, "vanilla")}
+                </div>
 
-              <div data-tab-content data-tab-value="strawberry" className={activeTab !== 'strawberry' ? 'hidden' : ''}>
-                {renderCocktailGrid(cocktailsByFlavor.strawberry, "strawberry")}
-              </div>
+                <div data-tab-content data-tab-value="strawberry" className={activeTab !== 'strawberry' ? 'hidden' : ''}>
+                  {renderCocktailGrid(cocktailsByFlavor.strawberry, "strawberry")}
+                </div>
+
+                {/* App Store style modal */}
+                <AnimatePresence>
+                  {expandedCocktail && selectedCocktailDetails && (
+                    <>
+                      {/* Overlay */}
+                      <motion.div
+                        className="fixed inset-0 bg-black/70 z-50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                      />
+                      
+                      {/* Modal */}
+                      <motion.div
+                        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        {/* Overlay to capture clicks outside the modal */}
+                        <div 
+                          className="absolute inset-0 bg-transparent pointer-events-auto" 
+                          onClick={handleCloseCocktail}
+                        />
+                        
+                        {/* This invisible div tracks the original card position for animation */}
+                        <motion.div
+                          className="absolute"
+                          initial={{ 
+                            top: cardPosition.top,
+                            left: cardPosition.left,
+                            width: cardPosition.width,
+                            height: cardPosition.height,
+                            opacity: 0
+                          }}
+                          layoutId={`card-container-${selectedCocktailDetails.activeTabName || activeTab}-${selectedCocktailDetails.name}`}
+                        />
+                        
+                        {/* The actual modal content */}
+                        <motion.div
+                          className="backdrop-blur-sm bg-rum-red-dark/60 overflow-hidden pointer-events-auto w-[90%] max-w-4xl max-h-[85vh] overflow-y-auto perspective-1000 z-10 modal-content"
+                          style={{ 
+                            borderRadius: '1rem'
+                          }}
+                          initial={{ 
+                            opacity: 0,
+                            scale: 0.9,
+                            borderRadius: '1rem',
+                            rotateY: -180
+                          }}
+                          animate={{ 
+                            opacity: 1,
+                            scale: 1,
+                            borderRadius: '1.5rem',
+                            rotateY: 0
+                          }}
+                          exit={{
+                            opacity: 0,
+                            scale: 0.9,
+                            borderRadius: '1rem',
+                            rotateY: 180,
+                            transition: {
+                              type: 'spring',
+                              stiffness: 120,
+                              damping: 20,
+                              duration: 0.5
+                            }
+                          }}
+                          transition={{ 
+                            type: 'spring',
+                            stiffness: 80,
+                            damping: 12,
+                            duration: 0.8
+                          }}
+                        >
+                          {/* Close button */}
+                          <motion.button
+                            className="absolute top-4 right-4 z-10 bg-rum-black/50 backdrop-blur-sm rounded-full p-2 text-white/70 hover:text-white transition-colors"
+                            onClick={handleCloseCocktail}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ delay: 0.2, duration: 0.3 }}
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </motion.button>
+                          
+                          <div className="flex flex-col md:flex-row">
+                            <div className="relative md:w-2/5 lg:w-1/2">
+                              <motion.img 
+                                src={selectedCocktailDetails.image}
+                                alt={selectedCocktailDetails.name}
+                                className="w-full h-64 md:h-full object-cover"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-rum-black/80 via-transparent to-transparent"></div>
+                            </div>
+                            
+                            <div className="p-6 md:p-8 flex-1">
+                              <motion.h3 
+                                className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                transition={{ delay: 0.1, duration: 0.4 }}
+                              >
+                                {selectedCocktailDetails.name}
+                              </motion.h3>
+                              
+                              <motion.p 
+                                className="text-rum-gold text-sm mb-4"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                transition={{ delay: 0.2, duration: 0.4 }}
+                              >
+                                {selectedCocktailDetails.rum}
+                              </motion.p>
+                              
+                              <motion.p 
+                                className="text-base sm:text-lg text-white/80 mb-6 leading-relaxed"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3, duration: 0.4 }}
+                              >
+                                {selectedCocktailDetails.description}
+                              </motion.p>
+                              
+                              <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4, duration: 0.4 }}
+                              >
+                                <h4 className="text-rum-gold font-semibold text-lg sm:text-xl mb-3">Ingredients:</h4>
+                                <ul className="space-y-2 sm:space-y-3">
+                                  {selectedCocktailDetails.ingredients.map((ingredient: string, idx: number) => (
+                                    <motion.li 
+                                      key={idx} 
+                                      className="text-white/70 flex items-center text-sm sm:text-base"
+                                      initial={{ opacity: 0, x: -20 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: 0.5 + idx * 0.1, duration: 0.4 }}
+                                    >
+                                      <span className="w-2 h-2 sm:w-3 sm:h-3 bg-rum-gold rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
+                                      {ingredient}
+                                    </motion.li>
+                                  ))}
+                                </ul>
+                              </motion.div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    </>
+                  )}
+                </AnimatePresence>
+              </LayoutGroup>
             </div>
           </div>
         </div>
