@@ -182,6 +182,9 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+    overflow-y: auto; /* Changed back to auto to allow scrolling */
+    background-color: #0A0A0A; /* Set a dark background color instead of transparent */
+    min-height: 100vh; /* Ensure body fills the entire viewport */
   }
 
   /* Custom text selection color */
