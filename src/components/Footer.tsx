@@ -38,11 +38,13 @@ const Footer = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="animate-fade-in-left flex justify-center items-center">
-            <img 
-              src="/Images/Logo.png" 
-              alt="Roman Candy Rum Logo" 
-              className="h-28 w-auto"
-            />
+            <Link to="/">
+              <img 
+                src="/Images/Logo.png" 
+                alt="Roman Candy Rum Logo" 
+                className="h-28 w-auto"
+              />
+            </Link>
           </div>
 
           <div className="animate-fade-in-up text-center md:text-left" style={{ animationDelay: '0.2s' }}>
