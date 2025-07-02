@@ -83,7 +83,7 @@ const Header = () => {
     setIsTransitioning(true);
     setTargetPath(path);
     
-    // Simple approach: Wait for animation to complete (5s)
+    // Simple approach: Wait for animation to complete (2.5s instead of 5s)
     setTimeout(() => {
       navigate(path);
       setIsMobileMenuOpen(false);
@@ -92,8 +92,8 @@ const Header = () => {
       setTimeout(() => {
         setIsTransitioning(false);
         setTargetPath('');
-      }, 1000);
-    }, 5000); // Wait 5 seconds before navigating
+      }, 500); // Reduced from 1000ms to 500ms
+    }, 2500); // Wait 2.5 seconds before navigating (reduced from 5000ms)
   };
 
   const navLinks = [
@@ -221,7 +221,7 @@ const Header = () => {
                 src="/Images/Wheel.png" 
                 alt="Loading Wheel" 
                 className="w-64 h-64 mx-auto animate-spin-slow opacity-80 drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]"
-                style={{ animationDuration: '8s' }}
+                style={{ animationDuration: '6s' }}
               />
               <div className="flex justify-center mt-8">
                 <h2 className="text-6xl md:text-7xl lg:text-8xl eb-garamond-800 flex items-center uppercase">

@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   const upcomingEvents = [
@@ -72,9 +73,11 @@ const Events = () => {
               Looking to host a private tasting or corporate event? Our team can create a bespoke experience 
               tailored to your needs, featuring our finest rums and expert guidance.
             </p>
-            <Button size="lg" className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg">
-              Contact Our Events Team
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg">
+                Contact Our Events Team
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

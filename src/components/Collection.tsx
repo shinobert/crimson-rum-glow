@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Define types
 type Rum = {
@@ -100,9 +101,10 @@ const RumCard = memo(({
         <img 
           src={rum.image} 
           alt={rum.name}
-          className="w-full h-full object-cover transition-transform duration-700"
+          className={`w-full h-full object-cover transition-transform duration-700 ${rum.name === "Vanilla Flavored" ? "object-position-center-bottom" : ""}`}
+          
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 "></div>
       </div>
 
       {/* Content */}
@@ -115,13 +117,13 @@ const RumCard = memo(({
           {rum.description}
         </p>
         
-        <a 
-          href={`/cocktails?tab=${rum.cocktailTab}`}
+        <Link 
+          to={`/cocktails?tab=${rum.cocktailTab}`}
           onClick={(e) => e.stopPropagation()}
           className={`inline-block px-4 sm:px-6 bg-${rum.accentColor} hover:bg-${rum.accentColor}/80 ${rum.name === "Chocolate Flavored" ? 'text-[#FFF8E1]' : 'text-black'} font-bold py-2 rounded-md transition-all duration-300 transform hover:scale-105 card-button text-sm sm:text-base`}
         >
           View Signature Cocktails
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -260,7 +262,7 @@ const Collection = () => {
     {
       name: "Vanilla Flavored",
       description: "The perfect rum to mix with ANYTHING! Bursting with sweet vanilla flavor, it's the ultimate companion for those who like their drinks smooth, versatile, and full of character.",
-      image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=600&q=80",
+      image: "/Images/Rotating_Cards_Vanilla.png",
       tags: ["Smooth", "Vanilla", "Premium"],
       bgGradient: "from-cream-100 via-vanilla-50 to-amber-50",
       accentColor: "amber-600",
@@ -282,7 +284,7 @@ const Collection = () => {
     {
       name: "Strawberry Flavored",
       description: "Bright, sweet, and unapologetically playful - this Strawberry Rum takes center stage in any cocktail! A must-have for curious mixers and confident sippers alike.",
-      image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80",
+      image: "/Images/Rotating_Cards_Strawberry.png",
       tags: ["Premium", "Strawberry", "Limited"],
       bgGradient: "from-pink-100 via-rose-100 to-red-100",
       accentColor: "pink-600",

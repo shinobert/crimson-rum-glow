@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const WhereToBuy = () => {
   const retailers = [
@@ -20,6 +21,12 @@ const WhereToBuy = () => {
     {
       name: "Dorignac's",
       location: "Metairie, LA",
+      type: "Retail Store",
+      products: "Full Collection Available"
+    },
+    {
+      name: "Vieux Carre Wine & Spirits",
+      location: "New Orleans, LA",
       type: "Retail Store",
       products: "Full Collection Available"
     }
@@ -118,7 +125,7 @@ const WhereToBuy = () => {
                 Enjoy exclusive online-only releases and member benefits.
               </p>
               <Button size="lg" className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base">
-                Shop Online
+                Coming Soon
               </Button>
             </div>
 
@@ -130,9 +137,16 @@ const WhereToBuy = () => {
                 Interested in carrying our premium rum collection? 
                 Contact our sales team to learn about wholesale opportunities.
               </p>
-              <Button size="lg" className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base">
-                Partner With Us
-              </Button>
+              <Link 
+                to="/contact" 
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <Button size="lg" className="bg-gradient-to-r from-rum-gold to-rum-gold-dark text-rum-black hover:from-rum-gold-dark hover:to-rum-gold font-bold px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base">
+                  Partner With Us
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

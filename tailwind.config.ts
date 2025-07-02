@@ -201,10 +201,10 @@ export default {
 				'fade-in-left': 'fade-in-left 0.8s ease-out',
 				'fade-in-right': 'fade-in-right 0.8s ease-out',
 				'scale-in': 'scale-in 0.6s ease-out',
-				'float': 'float 3s ease-in-out infinite',
+				'float': 'float 2s ease-in-out infinite',
 				'shine': 'shine 2s ease-in-out infinite',
 				'glow': 'glow 2s ease-in-out infinite',
-				'spin-slow': 'spin-slow 20s linear infinite',
+				'spin-slow': 'spin-slow 10s linear infinite',
 				'text-fill': 'text-fill 1.5s ease-in-out forwards'
 			}
 		}

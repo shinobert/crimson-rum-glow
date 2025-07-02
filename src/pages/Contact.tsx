@@ -170,41 +170,23 @@ const Contact = () => {
             <div className="animate-fade-in-right space-y-6 sm:space-y-8">
               <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
-                  Visit Our Distillery
+                  Are You A Vendor And Want Our Rum?
                 </h3>
                 <div className="space-y-3 sm:space-y-4 text-white/80 text-sm sm:text-base">
-                  <p><strong className="text-rum-gold">Address:</strong><br />
-                  Caribbean Premium Rum Distillery<br />
-                  123 Rum Heritage Road<br />
-                  St. Michael, Barbados BB15055</p>
+                  <p><strong className="text-rum-gold">Distributor:</strong><br />
+                  Fleur de LA Imports<br />
+                  19300 N 3rd St.<br />
+                  Covington, LA 70433</p>
                   
                   <p><strong className="text-rum-gold">Phone:</strong><br />
-                  +1 (246) 555-0123</p>
+                  +1 (985) 276-4465</p>
                   
                   <p><strong className="text-rum-gold">Email:</strong><br />
-                  info@caribbeanpremiumrum.com</p>
+                  jackie@fleurdelaimports.com
+                  </p>
                 </div>
               </div>
-
-              <div className="backdrop-blur-sm bg-rum-black/30 rounded-2xl p-6 sm:p-8 border border-transparent hover:border-rum-gold/50 transition-all duration-300">
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 bg-gradient-to-r from-white to-rum-gold bg-clip-text text-transparent">
-                  Business Hours
-                </h3>
-                <div className="space-y-2 sm:space-y-3 text-white/80 text-sm sm:text-base">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>10:00 AM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>

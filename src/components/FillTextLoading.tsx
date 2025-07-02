@@ -19,10 +19,10 @@ const FillTextLoading: React.FC<FillTextLoadingProps> = ({
       // Reset to starting position
       await controls.set({ clipPath: 'inset(0 100% 0 0)' });
       
-      // Animate to full width - 5 second duration
+      // Animate to full width - 2.5 second duration (reduced from 5)
       await controls.start({
         clipPath: 'inset(0 0% 0 0)',
-        transition: { duration: 5, ease: "easeInOut" }
+        transition: { duration: 2.5, ease: "easeOut" }
       });
     };
     
@@ -49,6 +49,7 @@ const FillTextLoading: React.FC<FillTextLoadingProps> = ({
         <motion.div 
           className="text-white"
           animate={controls}
+          initial={{ clipPath: 'inset(0 100% 0 0)' }}
           style={{ 
             clipPath: 'inset(0 100% 0 0)'
           }}

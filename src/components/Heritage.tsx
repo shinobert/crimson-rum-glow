@@ -74,7 +74,7 @@ const Heritage = () => {
           <div className="animate-fade-in-right">
             <div className="relative group">
               <img 
-                src="/Images/chocolate-rum.jpg" 
+                src="/Images/Chocolate_Rum_Black_Top.png"
                 alt="Roman Candy Chocolate Rum" 
                 className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-700 border border-transparent hover:border-rum-gold/50 transition-all duration-300"
               />
